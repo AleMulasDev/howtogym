@@ -2,8 +2,13 @@
   <ion-header>
     <ion-toolbar>
       <ion-title>
-        {{ name }}
+        <p>
+          {{ name }}
+        </p>
       </ion-title>
+      <IonButtons slot="end">
+        <UserIcon></UserIcon>
+      </IonButtons>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
@@ -12,7 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons } from '@ionic/vue';
+import UserIcon from './UserIcon.vue'
 defineProps({
   name: String,
 });

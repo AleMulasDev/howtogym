@@ -23,10 +23,21 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+/* Font awesome icons */
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faUser as rfaUser } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faUser)
+library.add(rfaUser)
+
 const app = createApp(App)
-  .use(IonicVue)
-  .use(router);
-  
+.use(IonicVue)
+.use(router);
+
+app.component('font-awesome-icon', FontAwesomeIcon)
+
 router.isReady().then(() => {
   app.mount('#app');
 });

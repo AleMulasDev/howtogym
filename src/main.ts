@@ -25,16 +25,23 @@ import './theme/variables.css';
 
 /* Font awesome icons */
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faChevronLeft, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faUser as rfaUser } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+/* Pinia store */
+import { createPinia } from 'pinia';
+const pinia = createPinia()
+
 library.add(faUser)
 library.add(rfaUser)
+library.add(faChevronLeft)
+library.add(faSearch)
 
 const app = createApp(App)
 .use(IonicVue)
-.use(router);
+.use(router)
+.use(pinia);
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 

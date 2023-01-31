@@ -1,23 +1,25 @@
 <template>
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>
-        <p>
-          {{ name }}
-        </p>
-      </ion-title>
-      <IonButtons slot="end">
-        <UserIcon></UserIcon>
-      </IonButtons>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <slot></slot>
-  </ion-content>
+  <ion-page>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>
+          <p>
+            {{ name }}
+          </p>
+        </ion-title>
+        <IonButtons slot="end">
+          <UserIcon></UserIcon>
+        </IonButtons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-router-outlet></ion-router-outlet>
+    </ion-content>
+  </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons } from '@ionic/vue';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonPage, IonRouterOutlet } from '@ionic/vue';
 import UserIcon from './UserIcon.vue'
 defineProps({
   name: String,

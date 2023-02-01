@@ -44,78 +44,11 @@
 		<div class="mt-3">
 			<p class="text-slate-700 text-sm">Allenamenti recenti</p>
 			<div class="flex flex-col overflow-scroll mt-1">
-				<div class="bg-slate-100 rounded-2xl p-4 relative mt-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-20 h-20 rounded-2xl"></ion-img>
-					<div class="absolute left-28 top-4">
-						<p class="text-lg">Nome workout</p>
-						<p class="text-sm text-slate-600">Durata: 1 ora</p>
-						<p class="text-sm text-slate-600">Intensità: media</p>
-					</div>
-				</div>
-				<div class="bg-slate-100 rounded-2xl p-4 relative mt-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-20 h-20 rounded-2xl"></ion-img>
-					<div class="absolute left-28 top-4">
-						<p class="text-lg">Nome workout</p>
-						<p class="text-sm text-slate-600">Durata: 1 ora</p>
-						<p class="text-sm text-slate-600">Intensità: media</p>
-					</div>
-				</div>
-				<div class="bg-slate-100 rounded-2xl p-4 relative mt-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-20 h-20 rounded-2xl"></ion-img>
-					<div class="absolute left-28 top-4">
-						<p class="text-lg">Nome workout</p>
-						<p class="text-sm text-slate-600">Durata: 1 ora</p>
-						<p class="text-sm text-slate-600">Intensità: media</p>
-					</div>
-				</div>
-				<div class="bg-slate-100 rounded-2xl p-4 relative mt-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-20 h-20 rounded-2xl"></ion-img>
-					<div class="absolute left-28 top-4">
-						<p class="text-lg">Nome workout</p>
-						<p class="text-sm text-slate-600">Durata: 1 ora</p>
-						<p class="text-sm text-slate-600">Intensità: media</p>
-					</div>
-				</div>
-				<div class="bg-slate-100 rounded-2xl p-4 relative mt-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-20 h-20 rounded-2xl"></ion-img>
-					<div class="absolute left-28 top-4">
-						<p class="text-lg">Nome workout</p>
-						<p class="text-sm text-slate-600">Durata: 1 ora</p>
-						<p class="text-sm text-slate-600">Intensità: media</p>
-					</div>
-				</div>
-				<div class="bg-slate-100 rounded-2xl p-4 relative mt-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-20 h-20 rounded-2xl"></ion-img>
-					<div class="absolute left-28 top-4">
-						<p class="text-lg">Nome workout</p>
-						<p class="text-sm text-slate-600">Durata: 1 ora</p>
-						<p class="text-sm text-slate-600">Intensità: media</p>
-					</div>
-				</div>
-				<div class="bg-slate-100 rounded-2xl p-4 relative mt-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-20 h-20 rounded-2xl"></ion-img>
-					<div class="absolute left-28 top-4">
-						<p class="text-lg">Nome workout</p>
-						<p class="text-sm text-slate-600">Durata: 1 ora</p>
-						<p class="text-sm text-slate-600">Intensità: media</p>
-					</div>
-				</div>
-				<div class="bg-slate-100 rounded-2xl p-4 relative mt-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-20 h-20 rounded-2xl"></ion-img>
-					<div class="absolute left-28 top-4">
-						<p class="text-lg">Nome workout</p>
-						<p class="text-sm text-slate-600">Durata: 1 ora</p>
-						<p class="text-sm text-slate-600">Intensità: media</p>
-					</div>
-				</div>
-				<div class="bg-slate-100 rounded-2xl p-4 relative mt-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-20 h-20 rounded-2xl"></ion-img>
-					<div class="absolute left-28 top-4">
-						<p class="text-lg">Nome workout</p>
-						<p class="text-sm text-slate-600">Durata: 1 ora</p>
-						<p class="text-sm text-slate-600">Intensità: media</p>
-					</div>
-				</div>
+				<SchedaCard :scheda="scheda"
+					v-for="scheda of schedeStore.storiaFilled"
+					:key="scheda?.nome"
+				>
+				</SchedaCard>
 			</div>
 		</div>
     </ion-content>
@@ -127,8 +60,13 @@ import { IonContent, IonPage, IonImg } from '@ionic/vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { IonSearchbar } from '@ionic/vue';
 import UserIcon from '@/components/UserIcon.vue';
+import { useSchedeStore } from '@/stores/schede'
+import { ref } from 'vue';
+import SchedaCard from '@/components/SchedaCard.vue';
 
 const search = ''
+const schedeStore = ref(useSchedeStore())
+
 
 const executeSearch = () => {
 	return

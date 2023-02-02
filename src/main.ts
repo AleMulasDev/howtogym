@@ -25,7 +25,7 @@ import './theme/variables.css';
 
 /* Font awesome icons */
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUser, faChevronLeft, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faChevronLeft, faSearch, faStar, faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { faUser as rfaUser } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -37,6 +37,8 @@ library.add(faUser)
 library.add(rfaUser)
 library.add(faChevronLeft)
 library.add(faSearch)
+library.add(faStar)
+library.add(faCalendar)
 
 const app = createApp(App)
 .use(IonicVue)

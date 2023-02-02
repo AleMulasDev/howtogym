@@ -42,15 +42,17 @@ export class Scheda{
 	id: string
 	nome: string
 	gruppo_muscolare: string
+	pic: string
 	durata: string
 	intensita: string
 	sala: string
 	esercizi: Array<SchedaEsercizio | SchedaEsercizioTempo>
 
-	constructor(id: string, nome: string, gruppo_muscolare: string, esercizi: Array<SchedaEsercizio | SchedaEsercizioTempo>, durata: string, intensita: string, sala: string){
+	constructor(id: string, nome: string, gruppo_muscolare: string, pic: string, esercizi: Array<SchedaEsercizio | SchedaEsercizioTempo>, durata: string, intensita: string, sala: string){
 		this.id = id
 		this.nome = nome
 		this.gruppo_muscolare = gruppo_muscolare
+		this.pic = pic
 		this.esercizi = esercizi
 		this.durata = durata
 		this.intensita = intensita
@@ -62,6 +64,7 @@ export const schede = [{
 	"id": "1",
 	"nome": "Full body workout",
 	"gruppo_muscolare": "tutto",
+	"pic": "/assets/GIFs/jumping-jack-male.jpg",
 	"esercizi": [{
 		"esercizio": "Jumping jack",
 		"tempo": "10",

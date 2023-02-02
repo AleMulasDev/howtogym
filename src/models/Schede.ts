@@ -39,6 +39,7 @@ export class SchedaEsercizioTempo{
 }
 
 export class Scheda{
+	id: string
 	nome: string
 	gruppo_muscolare: string
 	durata: string
@@ -46,7 +47,8 @@ export class Scheda{
 	sala: string
 	esercizi: Array<SchedaEsercizio | SchedaEsercizioTempo>
 
-	constructor(nome: string, gruppo_muscolare: string, esercizi: Array<SchedaEsercizio | SchedaEsercizioTempo>, durata: string, intensita: string, sala: string){
+	constructor(id: string, nome: string, gruppo_muscolare: string, esercizi: Array<SchedaEsercizio | SchedaEsercizioTempo>, durata: string, intensita: string, sala: string){
+		this.id = id
 		this.nome = nome
 		this.gruppo_muscolare = gruppo_muscolare
 		this.esercizi = esercizi
@@ -57,6 +59,7 @@ export class Scheda{
 }
 
 export const schede = [{
+	"id": "1",
 	"nome": "Full body workout",
 	"gruppo_muscolare": "tutto",
 	"esercizi": [{

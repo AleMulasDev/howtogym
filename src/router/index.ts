@@ -5,6 +5,7 @@ import HomePage from '../views/HomePage.vue'
 import LoginPage from '../views/LoginPage.vue'
 import LogoutPage from '../views/LogoutPage.vue'
 import PageContainer from '@/components/PageContainer.vue';
+import SchedaPage from '@/views/SchedaPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -29,6 +30,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     component: HomePage
+  },
+  {
+    path: '/scheda/:id',
+    component: SchedaPage
   },
   {
     path: '/login',

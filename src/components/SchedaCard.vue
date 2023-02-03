@@ -10,7 +10,15 @@
 			<p class="text-sm text-slate-600">Durata: {{ hTempo(scheda) }}</p>
 			<p class="text-sm text-slate-600">Intensità: {{ scheda?.intensita }} su 3</p>
 		</div>
+		<div class="absolute right-0" style="top: calc(50% - calc(1.25rem /2))">
+			<div>
+				<FontAwesomeIcon class="mr-3" size="lg" icon="star"></FontAwesomeIcon>
+			</div>
+		</div>
 	</div>
+
+
+	
 </template>
 
 <script lang="ts" setup>
@@ -19,6 +27,7 @@ import { useSchedeStore } from '@/stores/schede'
 import { ref } from 'vue';
 import type { Scheda } from '@/models/Schede';
 import { defineProps } from 'vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 
 const router = useIonRouter()
@@ -26,6 +35,8 @@ const props = defineProps(['scheda'])
 const scheda = ref(props.scheda)
 const routeTo = `/scheda/${scheda?.value.id}`
 const schedeStore = ref(useSchedeStore())
+
+
 
 function hTempo(scheda?: Scheda){
 	if(!scheda) return ''

@@ -3,31 +3,31 @@
 		<ion-tabs @ionTabsWillChange="beforeTabChange" @ionTabsDidChange="afterTabChange">
 			<ion-tab-bar slot="bottom">
 				<!-- Home  -->
-				<ion-tab-button tab="home" href="/tabs/home">
+				<ion-tab-button tab="home" href="/tabs/home" :selected="$route.path.indexOf('home') >= 0">
 					<ion-icon :icon="homeOutline"></ion-icon>
 					<ion-label></ion-label>
 				</ion-tab-button>
 
 				<!-- Preferiti -->
-				<ion-tab-button tab="favourites" href="/tabs/favourites">
+				<ion-tab-button tab="favourites" href="/tabs/favourites" :selected="$route.path.indexOf('favourites') >= 0">
 					<ion-icon :icon="starOutline"></ion-icon>
 					<ion-label></ion-label>
 				</ion-tab-button>
 
 				<!-- Esercizi -->
-				<ion-tab-button tab="esercizi" href="/tabs/esercizi">
+				<ion-tab-button tab="esercizi" href="/tabs/esercizi" :selected="$route.path.indexOf('esercizi') >= 0">
 					<ion-icon :icon="barbellOutline"></ion-icon>
 					<ion-label></ion-label>
 				</ion-tab-button>
 
 				<!-- Schede -->
-				<ion-tab-button tab="schede" href="/tabs/schede">
+				<ion-tab-button tab="schede" href="/tabs/schede" :selected="$route.path.indexOf('schede') >= 0">
 					<ion-icon :icon="newspaperOutline"></ion-icon>
 					<ion-label></ion-label>
 				</ion-tab-button>
 
 				<!-- Prenotazioni -->
-				<ion-tab-button tab="reservations" href="/tabs/reservations">
+				<ion-tab-button tab="reservations" href="/tabs/reservations" :selected="$route.path.indexOf('reservations') >= 0">
 					<ion-icon :icon="calendar"></ion-icon>
 					<ion-label></ion-label>
 				</ion-tab-button>

@@ -12,41 +12,32 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/tabs',
     component: TabsBaseVue,
-    props: route => {
-      console.log(route)
-      switch(route.path){
-        case '':
-          return {name: 'Home Page'}
-        
-      }
-      return {name: 'Home Page'}
-    },
     children: [
       {
-        path: '/',
+        path: 'home',
         component: HomePage
       },
       {
-        path: '/favourites',
+        path: 'favourites',
         component: HomePage
       },
       {
-        path: '/esercizi',
+        path: 'esercizi',
         component: HomePage
       },
       {
-        path: '/schede',
+        path: 'schede',
         component: HomePage
       },
       {
-        path: '/reservations',
+        path: 'reservations',
         component: HomePage
       },
     ],
   },
   {
     path: '/',
-    component: HomePage
+    redirect: '/tabs/'
   },
   {
     path: '/scheda/:id',

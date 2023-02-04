@@ -3,7 +3,7 @@
 		<ion-tabs @ionTabsWillChange="beforeTabChange" @ionTabsDidChange="afterTabChange">
 			<ion-tab-bar slot="bottom">
 				<!-- Home  -->
-				<ion-tab-button tab="" href="/tabs/">
+				<ion-tab-button tab="home" href="/tabs/home">
 					<ion-icon :icon="homeOutline"></ion-icon>
 					<ion-label></ion-label>
 				</ion-tab-button>

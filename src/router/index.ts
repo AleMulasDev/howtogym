@@ -6,11 +6,12 @@ import LoginPage from '../views/LoginPage.vue'
 import LogoutPage from '../views/LogoutPage.vue'
 import PageContainer from '@/components/PageContainer.vue';
 import SchedaPage from '@/views/SchedaPage.vue'
+import TabsBaseVue from '@/views/TabsBase.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/esercizio',
-    component: PageContainer,
+    path: '/tabs',
+    component: TabsBaseVue,
     props: route => {
       console.log(route)
       switch(route.path){
@@ -22,9 +23,25 @@ const routes: Array<RouteRecordRaw> = [
     },
     children: [
       {
-        path: '',
+        path: '/',
         component: HomePage
-      }
+      },
+      {
+        path: '/favourites',
+        component: HomePage
+      },
+      {
+        path: '/esercizi',
+        component: HomePage
+      },
+      {
+        path: '/schede',
+        component: HomePage
+      },
+      {
+        path: '/reservations',
+        component: HomePage
+      },
     ],
   },
   {

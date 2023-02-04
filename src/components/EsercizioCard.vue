@@ -57,6 +57,5 @@ function dismiss(){
 
 const props = defineProps(['esercizio'])
 const esercizio = ref(props.esercizio)
-console.log(esercizio)
 
 </script>

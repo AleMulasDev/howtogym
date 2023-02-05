@@ -14,7 +14,7 @@
 				<ion-icon class="mr-3 h-full" size="large" :icon="calendarClearOutline"></ion-icon>
 			</div>
 		</div>
-		<div class="mt-5">
+		<div class="mt-5 mb-16">
 			<EsercizioCard v-for="es of scheda.esercizi" :key="es.nome" :esercizio="es"></EsercizioCard>
 		</div>
 
@@ -34,10 +34,10 @@
 			</ion-header>
 			<ion-content class="ion-padding">
 				<div class="flex flex-row w-full justify-center">
-					<div @click="esNumber--" class="mr-3">
+					<div @click="backwards" class="mr-3" v-if="esNumber > 0">
 						<ion-button>Indietro</ion-button>
 					</div>
-					<div @click="esNumber++" class="ml-3">
+					<div @click="forward" class="ml-3" v-if="esNumber < scheda.esercizi.length-1">
 						<ion-button>Avanti</ion-button>
 					</div>
 				</div>
@@ -46,8 +46,11 @@
 						<div class="w-full mt-5 mb-5">
 							<ion-img :src="`/assets/GIFs/${esercizio?._esercizio?.gif}`" class="overflow-hidden w-2/3 h-auto rounded-2xl mx-auto"></ion-img>
 						</div>
-						<div class="text-center text-lg font-bold">
-							
+						<div class="text-center text-lg font-bold" v-if="Object.hasOwn(esercizio, 'ripetizioni') ">
+							Ripetizioni: {{ripetizioni}} / {{ esercizio.ripetizioni }}
+						</div>
+						<div class="text-center text-lg font-bold" v-if="Object.hasOwn(esercizio, 'tempo') ">
+							Tempo: {{ esercizio.tempo }} minuti
 						</div>
 						<div class="bg-slate-900 flex flex-row w-full p-5 rounded-2xl">
 							<div class="flex items-center h-full">
@@ -76,6 +79,7 @@ import { useSchedeStore } from '@/stores/schede';
 import EsercizioCard from '@/components/EsercizioCard.vue'
 import { computed, reactive, ref } from 'vue';
 import EmptyContainer from '@/components/EmptyContainer.vue';
+import { SchedaEsercizio, SchedaEsercizioTempo } from '@/models/Schede';
 
 const route = useRoute()
 const router = useIonRouter()
@@ -90,9 +94,23 @@ const toggleFav = () => {
 	scheda.isFavourite = !scheda.isFavourite
 }
 
+const forward = () => {
+	const tmp = esNumber.value
+	esNumber.value = -1
+	setTimeout(() => esNumber.value = tmp +1 , 100)
+}
+
+const backwards = () => {
+	const tmp = esNumber.value
+	esNumber.value = -1
+	esNumber.value = tmp -1
+	setTimeout(() => esNumber.value = tmp -1 , 100)
+}
+
 const esNumber = ref(0)
 const presenting = ref(false)
 const modal = ref(null)
+const ripetizioni = ref(1)
 
 function dismiss(){
 	presenting.value = false

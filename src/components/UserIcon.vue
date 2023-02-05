@@ -1,6 +1,6 @@
 <template>
 	<div class="h-full m-3" style="color: #18df44">
-		<RouterLink to="login">
+		<RouterLink to="/login">
 			<FontAwesomeIcon size="lg" :icon="icon"></FontAwesomeIcon>
 		</RouterLink>
 	</div>

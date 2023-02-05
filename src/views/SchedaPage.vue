@@ -1,5 +1,5 @@
 <template>
-	<FullScreenContent name="Visualizza scheda" v-if="scheda">
+	<EmptyContainer name="Visualizza scheda" v-if="scheda">
 		<div class="flex items-center">
 			<div class="mx-auto">
 				<ion-img :src="scheda.pic" class="flex w-48 h-48"></ion-img>
@@ -21,7 +21,7 @@
 		<ion-button slot="fixed" style="width: 128px;">
 			Inizia allenamento
 		</ion-button>
-	</FullScreenContent>
+	</EmptyContainer>
 </template>
 
 <script lang="ts" setup>
@@ -31,7 +31,7 @@ import { useRoute } from 'vue-router';
 import { useSchedeStore } from '@/stores/schede';
 import EsercizioCard from '@/components/EsercizioCard.vue'
 import { computed, reactive } from 'vue';
-import FullScreenContent from '@/components/FullScreenContent.vue';
+import EmptyContainer from '@/components/EmptyContainer.vue';
 
 const route = useRoute()
 const router = useIonRouter()

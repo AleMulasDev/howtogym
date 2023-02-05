@@ -1,5 +1,5 @@
 <template>
-	<EmptyContainer name="Visualizza scheda" v-if="scheda">
+	<FullScreenContent name="Visualizza scheda" v-if="scheda">
 		<div class="flex items-center">
 			<div class="mx-auto">
 				<ion-img :src="scheda.pic" class="flex w-48 h-48"></ion-img>
@@ -17,17 +17,21 @@
 		<div class="mt-5">
 			<EsercizioCard v-for="es of scheda.esercizi" :key="es.nome" :esercizio="es"></EsercizioCard>
 		</div>
-	</EmptyContainer>
+
+		<ion-button slot="fixed" style="width: 128px;">
+			Inizia allenamento
+		</ion-button>
+	</FullScreenContent>
 </template>
 
 <script lang="ts" setup>
-import { IonImg, useIonRouter, IonIcon } from '@ionic/vue';
+import { IonImg, useIonRouter, IonIcon, IonButton } from '@ionic/vue';
 import { star, starOutline, calendarClearOutline } from 'ionicons/icons';
 import { useRoute } from 'vue-router';
 import { useSchedeStore } from '@/stores/schede';
-import EmptyContainer from '@/components/EmptyContainer.vue';
 import EsercizioCard from '@/components/EsercizioCard.vue'
 import { computed, reactive } from 'vue';
+import FullScreenContent from '@/components/FullScreenContent.vue';
 
 const route = useRoute()
 const router = useIonRouter()
@@ -46,3 +50,11 @@ const scheda = reactive(schedeS.schede.filter(s => s.id == route.params.id)[0])
 
 
 </script>
+
+<style scoped>
+ion-button[slot="fixed"] {
+	bottom: 1%;
+	right: calc(50% - calc(128px / 2));
+	box-shadow: #0f172a 0 0 20px 18px;
+}
+</style>

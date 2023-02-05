@@ -1,12 +1,13 @@
 <template>
 	<EmptyContainer name="Preferiti">
+		<p class="text-slate-100 text-sm">Le tue schede preferite</p>
 		<div class="flex flex-col overflow-scroll mt-1">
-				<SchedaCard :scheda="scheda"
-					v-for="scheda of sStore.schedeFav"
-					:key="scheda?.nome"
-				>
-				</SchedaCard>
-			</div>
+			<SchedaCard :scheda="scheda"
+				v-for="scheda of sStore.schedeFav"
+				:key="scheda?.nome"
+			>
+			</SchedaCard>
+		</div>
 	</EmptyContainer>
 </template>
 

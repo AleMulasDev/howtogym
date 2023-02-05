@@ -10,7 +10,7 @@
 			</div>
 		</div>
 		<div class="mt-3">
-			<p class="text-slate-700 text-sm">Allenamenti popolari</p>
+			<p class="text-slate-100 text-sm">Allenamenti popolari</p>
 			<div class="flex flex-row overflow-scroll">
 				<div class="max-w-24 max-h-24 m-3">
 					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-24 h-24 rounded-2xl"></ion-img>
@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		<div class="mt-3">
-			<p class="text-slate-700 text-sm">Allenamenti recenti</p>
+			<p class="text-slate-100 text-sm">Allenamenti recenti</p>
 			<div class="flex flex-col overflow-scroll mt-1">
 				<SchedaCard :scheda="scheda"
 					v-for="scheda of schedeStore.storiaFilled"

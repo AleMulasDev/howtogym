@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
 import { useEserciziStore } from './esercizi'
-import { Esercizio, Scheda, schede } from '@/models/Schede'
+import { Esercizio, Scheda, schede as schedeDefault} from '@/models/Schede'
 
 export const useSchedeStore = defineStore('schede', {
 	state: () => ({
@@ -11,7 +11,7 @@ export const useSchedeStore = defineStore('schede', {
 	}),
 	getters: {
 		schede: (state) => {
-			return schede.map((s: any) => {
+			return schedeDefault.map((s: any) => {
 				return {...s,
 					isFavourite: state._schedeFavouries.find(sc => sc == s.nome) != undefined,
 					esercizi: s.esercizi.map((e: any) => {
@@ -20,14 +20,14 @@ export const useSchedeStore = defineStore('schede', {
 						_esercizio: state.esercizi.esercizi.find(e2 => e2.nome == e.esercizio)
 					}
 				})}
-			})
+			}) as Array<Scheda>
 		},
-		storiaFilled: (state) => {
-			return state.storia.map(s => schede.find(sc => sc.nome == s))
+		storiaFilled: function(state): Array<Scheda> {
+			return state.storia.map(s => this.schede.find((sc: Scheda) => sc.nome == s)) as Array<Scheda>
 		},
 		schedeFav: (state) => {
-			state._schedeFavouries.map(s => {
-				return schede.find(s2 => s2.nome == s)
+			return state._schedeFavouries.map(s => {
+				return {...schedeDefault.find(s2 => s2.nome == s), isFavourite: true}
 			})
 		}
 	},

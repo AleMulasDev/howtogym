@@ -7,6 +7,7 @@ import LogoutPage from '../views/LogoutPage.vue'
 import PageContainer from '@/components/PageContainer.vue';
 import SchedaPage from '@/views/SchedaPage.vue'
 import TabsBaseVue from '@/views/TabsBase.vue';
+import FavouritesPageVue from '@/views/FavouritesPage.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -23,7 +24,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'favourites',
-        component: HomePage
+        component: FavouritesPageVue
       },
       {
         path: 'esercizi',

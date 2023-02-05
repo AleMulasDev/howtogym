@@ -2,7 +2,7 @@
 	<div class="bg-slate-900 rounded-2xl p-4 relative mt-3"
 		v-for="scheda of schedeStore.storiaFilled"
 		:key="scheda?.nome"
-		@click.self="goToScheda"
+		@click="goToScheda"
 	>
 		<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-20 h-20 rounded-2xl"></ion-img>
 		<div class="absolute left-28 top-4">
@@ -12,7 +12,7 @@
 		</div>
 		<div class="absolute right-0" style="top: calc(50% - calc(1.25rem /2))">
 			<div class="h-6">
-				<ion-icon class="h-full mr-3" size="large" :icon="icon" @click="toggleFav"></ion-icon>
+				<ion-icon class="h-full mr-3" size="large" :icon="icon" @click.stop="toggleFav"></ion-icon>
 			</div>
 		</div>
 	</div>
@@ -25,24 +25,24 @@
 import { star, starOutline } from 'ionicons/icons';
 import { IonImg, useIonRouter, IonIcon } from '@ionic/vue';
 import { useSchedeStore } from '@/stores/schede'
-import { computed, ref } from 'vue';
+import { computed, reactive, ref } from 'vue';
 import type { Scheda } from '@/models/Schede';
 import { defineProps } from 'vue';
 
 
 const router = useIonRouter()
 const props = defineProps(['scheda'])
-const scheda = ref(props.scheda)
-const routeTo = `/scheda/${scheda?.value.id}`
+const scheda = reactive(props.scheda)
+const routeTo = `/scheda/${scheda?.id}`
 const schedeStore = ref(useSchedeStore())
 
 const icon = computed(() => {
-	return scheda.value.isFavourite ? star : starOutline
+	return scheda.isFavourite ? star : starOutline
 })
 
 const toggleFav = () => {
 	schedeStore.value.toggleFavScheda(scheda)
-	scheda.value.isFavourite = !scheda.value.isFavourite
+	scheda.isFavourite = !scheda.isFavourite
 }
 
 
@@ -53,7 +53,7 @@ function hTempo(scheda?: Scheda){
 }
 
 function goToScheda(){
-	router.navigate(`/scheda/${scheda?.value.id}`, 'forward', `push`)
+	router.navigate(`/scheda/${scheda?.id}`, 'forward', `push`)
 }
 
 </script>

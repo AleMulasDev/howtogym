@@ -63,7 +63,7 @@ export const useEserciziStore = defineStore('esercizi', {
 		},
 		eserciziFav: (state) => {
 			state._eserciziFavourites.map(e => {
-				return state._esercizi.find(e2 => e2.nome == e)
+				return {...state._esercizi.find(e2 => e2.nome == e), isFavourite: true}
 			})
 		}
 	},

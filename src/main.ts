@@ -26,7 +26,7 @@ import './theme/variables.css';
 /* Font awesome icons */
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUser, faChevronLeft, faSearch, faStar, faCalendar } from '@fortawesome/free-solid-svg-icons'
-import { faUser as rfaUser } from '@fortawesome/free-regular-svg-icons'
+import { faUser as rfaUser, faStar as rfaStar } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* Pinia store */
@@ -38,6 +38,7 @@ library.add(rfaUser)
 library.add(faChevronLeft)
 library.add(faSearch)
 library.add(faStar)
+library.add(rfaStar)
 library.add(faCalendar)
 
 const app = createApp(App)

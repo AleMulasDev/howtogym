@@ -3,12 +3,14 @@ export class Esercizio{
 	gif: string
 	descrizione: string
 	muscoli: string
+	isFavourite: boolean
 
-	constructor(nome: string, gif: string, descrizione: string, muscoli: string){
+	constructor(nome: string, gif: string, descrizione: string, muscoli: string, isFavourite: boolean){
 		this.nome = nome
 		this.gif = gif
 		this.descrizione = descrizione
 		this.muscoli = muscoli
+		this.isFavourite = isFavourite
 	}
 }
 
@@ -47,8 +49,10 @@ export class Scheda{
 	intensita: string
 	sala: string
 	esercizi: Array<SchedaEsercizio | SchedaEsercizioTempo>
+	isFavourite: boolean
 
-	constructor(id: string, nome: string, gruppo_muscolare: string, pic: string, esercizi: Array<SchedaEsercizio | SchedaEsercizioTempo>, durata: string, intensita: string, sala: string){
+	constructor(isFavourite: boolean, id: string, nome: string, gruppo_muscolare: string, pic: string, esercizi: Array<SchedaEsercizio | SchedaEsercizioTempo>, durata: string, intensita: string, sala: string){
+		this.isFavourite = isFavourite
 		this.id = id
 		this.nome = nome
 		this.gruppo_muscolare = gruppo_muscolare

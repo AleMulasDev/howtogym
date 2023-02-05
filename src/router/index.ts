@@ -14,6 +14,10 @@ const routes: Array<RouteRecordRaw> = [
     component: TabsBaseVue,
     children: [
       {
+        path: '',
+        redirect: '/tabs/home'
+      },
+      {
         path: 'home',
         component: HomePage
       },

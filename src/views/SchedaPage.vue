@@ -9,9 +9,9 @@
 			<div class="text-lg inline">
 				{{ scheda.nome }}
 			</div>
-			<div class="absolute right-0 top-0">
-				<FontAwesomeIcon class="mr-3" size="lg" icon="star"></FontAwesomeIcon>
-				<FontAwesomeIcon size="lg" icon="calendar"></FontAwesomeIcon>
+			<div class="absolute right-0 top-0 h-6">
+				<ion-icon class="mr-3 h-full" size="large" :icon="icon" @click="toggleFav"></ion-icon>
+				<ion-icon class="mr-3 h-full" size="large" :icon="calendarClearOutline"></ion-icon>
 			</div>
 		</div>
 		<div class="mt-5">
@@ -21,18 +21,28 @@
 </template>
 
 <script lang="ts" setup>
-import { IonImg, useIonRouter } from '@ionic/vue';
+import { IonImg, useIonRouter, IonIcon } from '@ionic/vue';
+import { star, starOutline, calendarClearOutline } from 'ionicons/icons';
 import { useRoute } from 'vue-router';
 import { useSchedeStore } from '@/stores/schede';
 import EmptyContainer from '@/components/EmptyContainer.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import EsercizioCard from '@/components/EsercizioCard.vue'
+import { computed, reactive } from 'vue';
 
 const route = useRoute()
 const router = useIonRouter()
 const schedeS = useSchedeStore()
 
-const scheda = schedeS.schede.filter(s => s.id == route.params.id)[0]
+const icon = computed(() => {
+	return scheda.isFavourite ? star : starOutline
+})
+
+const toggleFav = () => {
+	schedeS.toggleFavScheda(scheda)
+	scheda.isFavourite = !scheda.isFavourite
+}
+
+const scheda = reactive(schedeS.schede.filter(s => s.id == route.params.id)[0])
 
 
 </script>

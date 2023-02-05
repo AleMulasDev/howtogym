@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
+import { Esercizio } from '@/models/Schede'
 
 export const useEserciziStore = defineStore('esercizi', {
 	state: () => ({
-		esercizi: useStorage('esercizi',
+		_esercizi: useStorage('esercizi',
 			[{
 				"nome": "Cable one arm lat pulldown",
 				"gif": "5895.gif",
@@ -49,12 +50,30 @@ export const useEserciziStore = defineStore('esercizi', {
 				"gif": "21613.gif",
 				"descrizione": "Mettersi in una posizione d'incastro in modo tale da usare il ginocchio come perno, usare la parte posteriore della caviglia per eseguire l'esercizio e lavorare il femorale",
 				"muscoli": "femorale",
-			}]
-		)
+			}] as Array<Esercizio>
+		),
+		_eserciziFavourites: useStorage('eserciziFavourites', [] as Array<string>)
 	}),
 	getters: {
-
+		esercizi: (state) => {
+			return state._esercizi.map(e => {
+				e.isFavourite = state._eserciziFavourites.find(es => es == e.nome) != undefined
+				return e
+			}) as Array<Esercizio>
+		},
+		eserciziFav: (state) => {
+			state._eserciziFavourites.map(e => {
+				return state._esercizi.find(e2 => e2.nome == e)
+			})
+		}
 	},
 	actions: {
+		toggleFavEsercizio(es: Esercizio){
+			if(this._eserciziFavourites.find(e => e == es.nome)){
+				this._eserciziFavourites = this._eserciziFavourites.filter(e => e != es.nome)
+			}else{
+				this._eserciziFavourites.push(es.nome)
+			}
+		}
 	},
 })

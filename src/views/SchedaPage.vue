@@ -48,9 +48,29 @@
 						</div>
 						<div class="text-center text-lg font-bold" v-if="Object.hasOwn(esercizio, 'ripetizioni') ">
 							Ripetizioni: {{ripetizioni}} / {{ esercizio.ripetizioni }}
+
+
 						</div>
-						<div class="text-center text-lg font-bold" v-if="Object.hasOwn(esercizio, 'tempo') ">
+						<div class="text-center text-lg font-bold mb-3" v-if="Object.hasOwn(esercizio, 'tempo') ">
 							Tempo: {{ esercizio.tempo }} minuti
+
+							<ion-progress-bar :value="progress" v-if="started"></ion-progress-bar>
+
+							<div class="text-center mb-3 mt-3" v-if="started">
+								{{ timerTime }}
+							</div>
+
+							<div class="w-full flex flex-row justify-center mt-3">
+								<div @click="startTimer(esercizio)">
+									<ion-button>Inizia</ion-button>
+								</div>
+								<div @click="pauseTimer(esercizio)" v-if="!paused">
+									<ion-button>Pausa</ion-button>
+								</div>
+								<div @click="resumeTimer(esercizio)" v-if="paused">
+									<ion-button>Riprendi</ion-button>
+								</div>
+							</div>
 						</div>
 						<div class="bg-slate-900 flex flex-row w-full p-5 rounded-2xl">
 							<div class="flex items-center h-full">
@@ -72,7 +92,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IonImg, useIonRouter, IonIcon, IonButton, IonModal, IonContent, IonHeader, IonButtons, IonToolbar, IonTitle } from '@ionic/vue';
+import { IonImg, useIonRouter, IonProgressBar, IonIcon, IonButton, IonModal, IonContent, IonHeader, IonButtons, IonToolbar, IonTitle } from '@ionic/vue';
 import { star, starOutline, calendarClearOutline } from 'ionicons/icons';
 import { useRoute } from 'vue-router';
 import { useSchedeStore } from '@/stores/schede';
@@ -93,6 +113,50 @@ const toggleFav = () => {
 	schedeS.toggleFavScheda(scheda)
 	scheda.isFavourite = !scheda.isFavourite
 }
+
+const progress = ref(0)
+const paused = ref(false)
+const started = ref(false)
+let timer
+const time = ref(0)
+const startTimer = (esercizio: SchedaEsercizioTempo) => {
+	const total = +esercizio.tempo * 60
+	progress.value = 0
+	time.value = 0
+	paused.value = false
+	started.value = true
+	timer = setInterval(() => {
+		time.value +=1
+		progress.value = (time.value/total)
+		if(progress.value >= 1){
+			clearInterval(timer)
+		}
+	}, 1000)
+}
+
+const pauseTimer = (esercizio: SchedaEsercizioTempo) => {
+	clearInterval(timer)
+	paused.value = true
+}
+
+const resumeTimer = (esercizio: SchedaEsercizioTempo) => {
+	const total = +esercizio.tempo * 60
+	paused.value = false
+	timer = setInterval(() => {
+		time.value+=1
+		progress.value = (time.value/total)
+		if(progress.value >= 1){
+			clearInterval(timer)
+		}
+	}, 1000)
+}
+
+const timerTime = computed(() => {
+	const minutes = Math.floor(time.value / 60)
+	const seconds = time.value - (minutes*60)
+	console.log(time)
+	return `${minutes}m : ${seconds}s`
+})
 
 const forward = () => {
 	const tmp = esNumber.value

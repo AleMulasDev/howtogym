@@ -8,6 +8,7 @@ import PageContainer from '@/components/PageContainer.vue';
 import SchedaPage from '@/views/SchedaPage.vue'
 import TabsBaseVue from '@/views/TabsBase.vue';
 import FavouritesPageVue from '@/views/FavouritesPage.vue';
+import AllenamentiPageVue from '@/views/AllenamentiPage.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -28,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'esercizi',
-        component: HomePage
+        component: AllenamentiPageVue
       },
       {
         path: 'schede',

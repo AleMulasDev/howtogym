@@ -1,6 +1,13 @@
 <template>
 	<EmptyContainer name="Preferiti">
-		<p class="text-slate-100 text-sm">Le tue schede preferite</p>
+		<p class="text-slate-100 text-sm">Il più recente allenamento:</p>
+		<div class="flex flex-col overflow-scroll mt-1">
+			<SchedaCard :scheda="sStore.storiaFilled[0]"
+				v-if="sStore.storiaFilled[0]"
+			>
+			</SchedaCard>
+		</div>
+		<p class="text-slate-100 text-sm mt-5">Le tue schede preferite</p>
 		<div class="flex flex-col overflow-scroll mt-1">
 			<SchedaCard :scheda="scheda"
 				v-for="scheda of sStore.schedeFav"

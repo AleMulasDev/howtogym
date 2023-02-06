@@ -8,7 +8,7 @@
 		<div class="absolute left-28 top-4">
 			<p class="text-lg">{{ scheda?.nome }}</p>
 			<p class="text-sm text-slate-600">Durata: {{ hTempo(scheda) }}</p>
-			<p class="text-sm text-slate-600">Intensità: {{ scheda?.intensita }} su 3</p>
+			<p class="text-sm text-slate-600">Intensità: {{ intensitaWord }}</p>
 		</div>
 		<div class="absolute right-0" style="top: calc(50% - calc(1.25rem /2))">
 			<div class="h-6">
@@ -44,6 +44,15 @@ const toggleFav = () => {
 	schedeStore.value.toggleFavScheda(scheda)
 	scheda.isFavourite = !scheda.isFavourite
 }
+
+const intensitaWord = computed(() => {
+	switch(+ scheda.intensita){
+		case 1: return 'Bassa'
+		case 2: return 'Media'
+		case 3: return 'Alta'
+	}
+	return 'Altissima'
+})
 
 
 function hTempo(scheda?: Scheda){

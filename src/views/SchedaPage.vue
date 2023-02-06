@@ -18,7 +18,7 @@
 			<EsercizioCard v-for="es of scheda.esercizi" :key="es.nome" :esercizio="es"></EsercizioCard>
 		</div>
 
-		<ion-button slot="fixed" style="width: 128px;" :id="`open_modal_${scheda.nome}`">
+		<ion-button slot="fixed" style="width: 256px;" :id="`open_modal_${scheda.nome}`">
 			Inizia allenamento
 		</ion-button>
 
@@ -189,7 +189,7 @@ const scheda = reactive(schedeS.schede.filter(s => s.id == route.params.id)[0])
 <style scoped>
 ion-button[slot="fixed"] {
 	bottom: 1%;
-	right: calc(50% - calc(128px / 2));
+	left: calc(50% - calc(256px / 2));
 	box-shadow: #0f172a 0 0 20px 18px;
 }
 </style>

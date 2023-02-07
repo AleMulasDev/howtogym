@@ -112,7 +112,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IonImg, useIonRouter, IonProgressBar, IonIcon, IonButton, IonModal, IonContent, IonHeader, IonButtons, IonToolbar, IonTitle } from '@ionic/vue';
+import { IonImg, alertController, useIonRouter, IonProgressBar, IonIcon, IonButton, IonModal, IonContent, IonHeader, IonButtons, IonToolbar, IonTitle } from '@ionic/vue';
 import { star, starOutline, calendarClearOutline } from 'ionicons/icons';
 import { useRoute } from 'vue-router';
 import { useSchedeStore } from '@/stores/schede';
@@ -195,10 +195,28 @@ const esNumber = ref(0)
 const presenting = ref(false)
 const modal = ref(null)
 const ripetizioni = ref(1)
+let alert = null
 
-function dismiss(){
-	presenting.value = false
-	modal.value.$el.dismiss();
+async function dismiss(){
+	alert = await alertController.create({
+		header: 'Attenzione',
+		message: 'Chiudendo la schermata terminerai il tuo allenamento.',
+		buttons:[
+			{
+				text: 'Annulla',
+				role: 'cancel',
+				handler: () => undefined
+			},{
+				text: 'Conferma',
+				role: 'confirm',
+				handler: () => {
+					presenting.value = false
+					modal.value.$el.dismiss();
+				}
+			}
+		]
+	}) 
+	await alert.present()
 }
 
 const scheda = reactive(schedeS.schede.filter(s => s.id == route.params.id)[0])

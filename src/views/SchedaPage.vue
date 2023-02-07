@@ -1,5 +1,25 @@
 <template>
-	<EmptyContainer name="Visualizza scheda" v-if="scheda">
+	<EmptyContainer name="Visualizza scheda" v-if="scheda"
+	help-str="In questa pagina hai la visualizzazione dei dettagli della scheda.
+	<br><br>
+	Di fianco al nome è presente una stella che, se vuota, indica che la scheda non è tra i preferiti.
+	Premendo sulla stella è possibile aggiungere o rimuovere la scheda tra i preferiti.<br>
+	Successivamente, potrai visionare le tue schede preferite nell'apposita sezione dell'applicazione.
+	<br><br>
+	Sempre di fianco al nome è presente anche l'icona di un calendario, premendoci potrai prenotare
+	un appuntamento nella nostra palestra.
+	<br><br>
+	Non sai come eseguire un esercizio?<br>
+	Premi sull'esercizio su cui ai dubbi, si aprirà una schermata dove ti verrà spiegato e avrai la possibilità
+	di vedere una dimostrazione pratica.
+	<br><br>
+	Sotto il nome di ogni esercizio puoi vedere la parte che allenerà.
+	<br><br>
+	In basso alla schermata, trovi il tasto inizia allenamento.<br>
+	Con questa funzionalità potrai essere seguito passo passo nell'esecuzione del tuo allenamento
+	con la scheda visualizzata
+	"
+	>
 		<div class="flex items-center">
 			<div class="mx-auto">
 				<ion-img :src="scheda.pic" class="flex w-48 h-48"></ion-img>

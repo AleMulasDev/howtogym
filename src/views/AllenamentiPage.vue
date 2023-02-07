@@ -1,5 +1,12 @@
 <template>
-	<EmptyContainer name="Allenamenti">
+	<EmptyContainer name="Allenamenti"
+		help-str="In questa pagina puoi visionare varie schede di allenamento
+		suddivise per muscoli che vengono allenati. 
+		<br><br>
+		Cliccando su una scheda la si può aprire e visionare gli esercizi in essa contenuti.
+		<br><br>
+		Una volta trovata la scheda desiderata, premi avvia esercizio e inizia subito il tuo allenamento!"
+	>
 		<div v-for="cat in categories" :key="cat" class="mt-5">
 			<p class="text-slate-100 text-sm">{{ cat }}</p>
 			<div class="flex flex-row overflow-scroll h-35 w-full">

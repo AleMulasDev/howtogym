@@ -111,8 +111,7 @@ export const schede = [{
 		"ripetizioni": "20",
 		"tempo_recupero": "1",
 	}],
-},
-{
+}, {
 	"id": "2",
 	"nome": "Upper body destroyer",
 	"gruppo_muscolare": "petto, spalle, braccia",
@@ -143,10 +142,10 @@ export const schede = [{
 	}, {
 		"esercizio": "Lateral raises",
 		"serie": "3",
-		"ripetizioni": ["8","8","8"],
+		"ripetizioni": ["8", "8", "8"],
 		"tempo di recupero": "1",
 	}, {
-		"esercizio": "Frenchpress",
+		"esercizio": "EZ bar standing french press",
 		"serie": "3",
 		"ripetizioni": "10",
 		"tempo di recupero": "1",
@@ -165,6 +164,49 @@ export const schede = [{
 		"serie": "4",
 		"ripetizioni": "12",
 		"tempo di recupero": "1",
-	}],
-}
-] as Scheda[]
+	}]
+}, {
+	"id": "3",
+	"nome": "Heavy leg day",
+	"gruppo_muscolare": "quadricipiti, femorali, polpacci",
+	"pic": "/assets/workoutcover/upperbody.png",
+	"durata": "90",
+	"intensita": "2",
+	"sala": "Quadricipiti, femorali, polpacci",
+	"esercizi": [{
+		"esercizio": "Barbell squat",
+		"serie": "5",
+		"ripetizioni": "10",
+		"tempo di recupero": "2",
+	}, {
+		"esercizio": "Leg press",
+		"serie": "4",
+		"ripetizioni": "12",
+		"tempo di recupero": "1",
+	}, {
+		"esercizio": "Dumbbell walking lunges",
+		"serie": "5",
+		"ripetizioni": "12",
+		"tempo di recupero": "2",
+	}, {
+		"esercizio": "Straight leg deadlift",
+		"serie": "6",
+		"ripetizioni": "8",
+		"tempo di recupero": "2",
+	}, {
+		"esercizio": "Romanian deadlift",
+		"serie": "4",
+		"ripetizioni": "8",
+		"tempo di recupero": "1",
+	}, {
+		"esercizio": "Standing Leg curl",
+		"serie": "4",
+		"ripetizioni": ["8", "8", "8"],
+		"tempo di recupero": "1",
+	}, {
+		"esercizio": "Barbell standing calf raise",
+		"serie": "6",
+		"ripetizioni": "24",
+		"tempo di recupero": "1",
+	}]
+}] as Scheda[]

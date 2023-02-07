@@ -66,12 +66,7 @@ export const useEserciziStore = defineStore('esercizi', {
 				"descrizione": "Sdraiarsi a faccia in su su una panca piana tenendo un bilanciere con una presa overhand sopra il petto e con una leggera flessione dei gomiti. Abbassare lentamente il bilanciere sopra la testa fino a sentire uno stiramento del petto, quindi contrarre i dorsali per riportarlo alla posizione di partenza.",
 				"muscoli": "petto, tricipiti, dorso",
 			}, {
-				"nome": "Barbell pullover",
-				"gif": "strictcurl.gif",
-				"descrizione": "Appoggiare la schiena ad una superficie, mantenendo una presa supina con le mani, portare il bilanciere a livello del petto e ritornare nella posizione originale, portando leggermente in avanti i gomiti",
-				"muscoli": "bicipiti",
-			}, {
-				"nome": "Barbell pullover",
+				"nome": "Strict curl",
 				"gif": "strictcurl.gif",
 				"descrizione": "Appoggiare la schiena ad una superficie, mantenendo una presa supina con le mani, portare il bilanciere a livello del petto e ritornare nella posizione originale, portando leggermente in avanti i gomiti",
 				"muscoli": "bicipiti",
@@ -89,6 +84,41 @@ export const useEserciziStore = defineStore('esercizi', {
 				"nome": "Romanian deadlift",
 				"gif": "romaniandeadlift.gif",
 				"descrizione": "E' un deadlift in cui il corpo è piegato sui fianchi e le ginocchia non sono piegate. Il deadlift è un esercizio di potenziamento in cui un bilanciere carico viene sollevato da terra da una posizione stabilizzata e piegata, con le ginocchia libere di piegarsi.",
+				"muscoli": "femorali",
+			}, {
+				"nome": "Bent over row",
+				"gif": "bentover.gif",
+				"descrizione": "Piegarsi in avanti sui fianchi e mantenere la schiena dritta con una leggera flessione delle ginocchia. Abbassare la sbarra verso il pavimento fino a quando i gomiti sono completamente dritti e mantenere la schiena piatta mentre la sbarra viene tirata verso l'ombelico. Quindi abbassare lentamente la sbarra fino alla posizione di partenza e ripetere.",
+				"muscoli": "dorso",
+			}, {
+				"nome": "Chest fly",
+				"gif": "chestfly.gif",
+				"descrizione": "IÈ una variante della panca standard e si esegue sdraiandosi su una panca piana con un peso in ogni mano. È possibile eseguire questo esercizio con manubri o bilancieri, portare il peso in basso sino a sentire il massimo tiramento del petto e tornare nella posizione originale portando il peso in alto",
+				"muscoli": "petto",
+			}, {
+				"nome": "Upright row",
+				"gif": "uprightrow.jpg",
+				"descrizione": "L'upright row è un esercizio di allenamento con i pesi che si esegue tenendo un peso con una presa overhand e sollevandolo direttamente fino alla clavicola. Si tratta di un esercizio composto che coinvolge principalmente spalle e trapezio",
+				"muscoli": "spalle",
+			}, {
+				"nome": "Cable kickback",
+				"gif": "cablekickback.jpg",
+				"descrizione": "Piegatevi leggermente in avanti in modo che il busto sia quasi parallelo al pavimento. Impegnate il core e mantenete la testa, il collo e la colonna vertebrale in linea. Appoggiate una mano sulla coscia come sostegno. Espirando, impegnate i tricipiti estendendo lentamente il braccio all'indietro il più possibile, tenendolo stretto al fianco.",
+				"muscoli": "tricipiti",
+			}, {
+				"nome": "Cable overhead curl",
+				"gif": "cableoverheadcurl.jpg",
+				"descrizione": "L'overhead cable curl è un esercizio per i bicipiti eseguito tra due pile di cavi, utilizzando un paio di maniglie a D. Le braccia e i gomiti sono tenuti all'altezza delle spalle per tutta la durata del movimento, mentre entrambe le mani si curvano verso le orecchie.",
+				"muscoli": "bicipiti",
+			}, {
+				"nome": "Leg press",
+				"gif": "legpress.gif",
+				"descrizione": "La leg press si esegue in posizione seduta. Le gambe premono ripetutamente contro i pesi, che possono essere regolati in base al livello di forma fisica. In questo modo si allenano i quadricipiti, i glutei, i bicipiti femorali, i fianchi e i polpacci. La posizione seduta delle pressioni sulle gambe aiuta a mantenere fermi la parte superiore del corpo e il busto.",
+				"muscoli": "quadricipiti",
+			}, {
+				"nome": "Straight leg deadlift",
+				"gif": "deadliftstraightleg.gif",
+				"descrizione": "Posizionarsi nella posizione di snatch o clean pulling con una presa pulita sulla sbarra. Mantenendo le gambe tese con le ginocchia completamente dritte, incardinarsi all'anca e permettere alla schiena di arrotondarsi per portare la sbarra il più possibile lungo le gambe, come se ci si stesse allungando.",
 				"muscoli": "femorali",
 			}] as Array<Esercizio>
 		),

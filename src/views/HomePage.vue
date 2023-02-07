@@ -12,33 +12,10 @@
 		<div class="mt-3">
 			<p class="text-slate-100 text-sm">Allenamenti popolari</p>
 			<div class="flex flex-row overflow-scroll">
-				<div class="max-w-24 max-h-24 m-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-24 h-24 rounded-2xl"></ion-img>
+				<div class="max-h-35 mr-2" v-for="scheda of schedeStore.schede" :key="scheda.id">
+					<SchedaIcon :scheda="scheda"></SchedaIcon>
 				</div>
-				<div class="max-w-24 max-h-24 m-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-24 h-24 rounded-2xl"></ion-img>
-				</div>
-				<div class="max-w-24 max-h-24 m-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-24 h-24 rounded-2xl"></ion-img>
-				</div>
-				<div class="max-w-24 max-h-24 m-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-24 h-24 rounded-2xl"></ion-img>
-				</div>
-				<div class="max-w-24 max-h-24 m-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-24 h-24 rounded-2xl"></ion-img>
-				</div>
-				<div class="max-w-24 max-h-24 m-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-24 h-24 rounded-2xl"></ion-img>
-				</div>
-				<div class="max-w-24 max-h-24 m-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-24 h-24 rounded-2xl"></ion-img>
-				</div>
-				<div class="max-w-24 max-h-24 m-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-24 h-24 rounded-2xl"></ion-img>
-				</div>
-				<div class="max-w-24 max-h-24 m-3">
-					<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-24 h-24 rounded-2xl"></ion-img>
-				</div>
+				
 			</div>
 		</div>
 		<div class="mt-3">
@@ -63,6 +40,7 @@ import UserIcon from '@/components/UserIcon.vue';
 import { useSchedeStore } from '@/stores/schede'
 import { ref } from 'vue';
 import SchedaCard from '@/components/SchedaCard.vue';
+import SchedaIcon from '@/components/SchedaIcon.vue';
 
 const search = ''
 const schedeStore = ref(useSchedeStore())

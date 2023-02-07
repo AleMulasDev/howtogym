@@ -117,7 +117,7 @@ const toggleFav = () => {
 const progress = ref(0)
 const paused = ref(false)
 const started = ref(false)
-let timer
+let timer: any
 const time = ref(0)
 const startTimer = (esercizio: SchedaEsercizioTempo) => {
 	const total = +esercizio.tempo * 60
@@ -182,7 +182,6 @@ function dismiss(){
 }
 
 const scheda = reactive(schedeS.schede.filter(s => s.id == route.params.id)[0])
-
 
 </script>
 

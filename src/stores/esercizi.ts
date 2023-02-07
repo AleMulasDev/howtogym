@@ -50,6 +50,46 @@ export const useEserciziStore = defineStore('esercizi', {
 				"gif": "21613.gif",
 				"descrizione": "Mettersi in una posizione d'incastro in modo tale da usare il ginocchio come perno, usare la parte posteriore della caviglia per eseguire l'esercizio e lavorare il femorale",
 				"muscoli": "femorale",
+			}, {
+				"nome": "Rocky pull-up",
+				"gif": "rockypullup.jpg",
+				"descrizione": "Il rocky pull-up è un esercizio per la parte superiore del corpo che consiste nell'appendersi alla sbarra per le mani, con i palmi rivolti verso l'esterno, e nel sollevare l'intero corpo con i muscoli delle braccia e della schiena fino a quando il petto tocca la sbarra, inarcando leggermente la schiena",
+				"muscoli": "dorsali",
+			}, {
+				"nome": "Bench dip",
+				"gif": "benchdip.jpg",
+				"descrizione": "Le dip sono un esercizio con il peso corporeo che sviluppa i tricipiti e altri muscoli della parte superiore del corpo. L'esercizio inizia tenendosi alla panca con le braccia dritte. Si piegano quindi i gomiti fino a quando la parte superiore delle braccia è parallela al suolo prima di risalire alla posizione di partenza.",
+				"muscoli": "petto, tricipiti",
+			}, {
+				"nome": "Barbell pullover",
+				"gif": "pullover.gif",
+				"descrizione": "Sdraiarsi a faccia in su su una panca piana tenendo un bilanciere con una presa overhand sopra il petto e con una leggera flessione dei gomiti. Abbassare lentamente il bilanciere sopra la testa fino a sentire uno stiramento del petto, quindi contrarre i dorsali per riportarlo alla posizione di partenza.",
+				"muscoli": "petto, tricipiti, dorso",
+			}, {
+				"nome": "Barbell pullover",
+				"gif": "strictcurl.gif",
+				"descrizione": "Appoggiare la schiena ad una superficie, mantenendo una presa supina con le mani, portare il bilanciere a livello del petto e ritornare nella posizione originale, portando leggermente in avanti i gomiti",
+				"muscoli": "bicipiti",
+			}, {
+				"nome": "Barbell pullover",
+				"gif": "strictcurl.gif",
+				"descrizione": "Appoggiare la schiena ad una superficie, mantenendo una presa supina con le mani, portare il bilanciere a livello del petto e ritornare nella posizione originale, portando leggermente in avanti i gomiti",
+				"muscoli": "bicipiti",
+			}, {
+				"nome": "Lateral raises",
+				"gif": "lateralraise.gif",
+				"descrizione": "Il sollevamento laterale è un esercizio di forza per le spalle che consiste nel sollevare un paio di manubri lontano dal corpo in una rotazione esterna. Le alzate laterali fanno lavorare il muscolo trapezio della parte superiore della schiena e il gruppo muscolare deltoide delle spalle, in particolare i deltoidi anteriori e laterali.",
+				"muscoli": "spalle",
+			}, {
+				"nome": "Dumbbell walking lunges",
+				"gif": "lunges.gif",
+				"descrizione": "E' un esercizio in cui una persona in posizione eretta fa un passo in avanti in una posizione in cui il ginocchio anteriore è profondamente piegato, mantenendo il busto eretto, e poi continua in avanti ripetendo lo stesso procedimento per l'altra gamba.",
+				"muscoli": "quadricipiti",
+			}, {
+				"nome": "Romanian deadlift",
+				"gif": "romaniandeadlift.gif",
+				"descrizione": "E' un deadlift in cui il corpo è piegato sui fianchi e le ginocchia non sono piegate. Il deadlift è un esercizio di potenziamento in cui un bilanciere carico viene sollevato da terra da una posizione stabilizzata e piegata, con le ginocchia libere di piegarsi.",
+				"muscoli": "femorali",
 			}] as Array<Esercizio>
 		),
 		_eserciziFavourites: useStorage('eserciziFavourites', [] as Array<string>)
@@ -63,15 +103,15 @@ export const useEserciziStore = defineStore('esercizi', {
 		},
 		eserciziFav: (state) => {
 			state._eserciziFavourites.map(e => {
-				return {...state._esercizi.find(e2 => e2.nome == e), isFavourite: true}
+				return { ...state._esercizi.find(e2 => e2.nome == e), isFavourite: true }
 			})
 		}
 	},
 	actions: {
-		toggleFavEsercizio(es: Esercizio){
-			if(this._eserciziFavourites.find(e => e == es.nome)){
+		toggleFavEsercizio(es: Esercizio) {
+			if (this._eserciziFavourites.find(e => e == es.nome)) {
 				this._eserciziFavourites = this._eserciziFavourites.filter(e => e != es.nome)
-			}else{
+			} else {
 				this._eserciziFavourites.push(es.nome)
 			}
 		}

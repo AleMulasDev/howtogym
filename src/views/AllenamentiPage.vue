@@ -1,11 +1,10 @@
 <template>
 	<EmptyContainer name="Allenamenti">
-		<div v-for="cat in categories" :key="cat">
+		<div v-for="cat in categories" :key="cat" class="mt-5">
 			<p class="text-slate-100 text-sm">{{ cat }}</p>
-			<div class="flex flex-row overflow-scroll h-35 w-full" 
-				v-for="es in sStore.schede.filter(s => s.gruppo_muscolare = cat)"
-				:key="es.nome">
-				<div>
+			<div class="flex flex-row overflow-scroll h-35 w-full">
+				<div v-for="es in sStore.schede.filter(s => s.gruppo_muscolare == cat)"
+				:key="es.nome" class="mr-2">
 					<SchedaIcon :scheda="es"></SchedaIcon>
 				</div>
 			</div>

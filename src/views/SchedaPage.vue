@@ -66,9 +66,61 @@
 						<div class="w-full mt-5 mb-5">
 							<ion-img :src="`/assets/GIFs/${esercizio?._esercizio?.gif}`" class="overflow-hidden w-2/3 h-auto rounded-2xl mx-auto"></ion-img>
 						</div>
-						<div class="text-center text-lg font-bold" v-if="Object.hasOwn(esercizio, 'ripetizioni') ">
+						<div class="text-center text-lg font-bold" v-if="Object.hasOwn(esercizio, 'ripetizioni') && Array.isArray(esercizio.ripetizioni)">
+							<div v-for="(ripetizioniEs, index) in esercizio.ripetizioni" :key="ripetizioniEs + esercizio.esercizio">
+								<p v-if="ripetizioniIndex == index">
+									Ripetizioni: {{ripetizioni}} / {{ ripetizioniEs }}
+								</p>
+								<p v-if="ripetizioniIndex > index">
+									Ripetizioni: {{ripetizioniEs}} / {{ ripetizioniEs }}
+								</p>
+								<p v-if="ripetizioniIndex < index">
+									Ripetizioni: 0 / {{ ripetizioniEs }}
+								</p>
+							</div>
+
+							<ion-progress-bar :value="progress"></ion-progress-bar>
+
+							<div class="w-full flex flex-row justify-center mt-3">
+								<div class="mr-5" @click="resetRipetizioni(esercizio)">
+									<ion-button color="warning">Reset</ion-button>
+								</div>
+								<div class="mr-2" @click="removeRipetizioni(esercizio)" v-if="ripetizioni>0">
+									<ion-button>Rimuovi 1</ion-button>
+								</div>
+								<div @click="addRipetizioni(esercizio)" v-if="ripetizioni<esercizio.ripetizioni[ripetizioniIndex]">
+									<ion-button>Aggiungi 1</ion-button>
+								</div>
+								<div @click="nextRipetizioniIndex(esercizio)" v-if="ripetizioni==esercizio.ripetizioni[ripetizioniIndex] && ripetizioniIndex < esercizio.ripetizioni.length-1">
+									<ion-button>Avanti</ion-button>
+								</div>
+								<div @click="forward()" v-if="ripetizioni==esercizio.ripetizioni[ripetizioniIndex] && ripetizioniIndex == esercizio.ripetizioni.length-1">
+									<ion-button>Prossimo</ion-button>
+								</div>
+								
+							</div>
+
+						</div>
+						<div class="text-center text-lg font-bold" v-if="Object.hasOwn(esercizio, 'ripetizioni') && !Array.isArray(esercizio.ripetizioni)">
 							Ripetizioni: {{ripetizioni}} / {{ esercizio.ripetizioni }}
 
+							<ion-progress-bar :value="progress"></ion-progress-bar>
+
+							<div class="w-full flex flex-row justify-center mt-3">
+								<div class="mr-5" @click="resetRipetizioni(esercizio)">
+									<ion-button color="warning">Reset</ion-button>
+								</div>
+								<div class="mr-2" @click="removeRipetizioni(esercizio)" v-if="ripetizioni>0">
+									<ion-button>Rimuovi 1</ion-button>
+								</div>
+								<div @click="addRipetizioni(esercizio)" v-if="ripetizioni<esercizio.ripetizioni">
+									<ion-button>Aggiungi 1</ion-button>
+								</div>
+								<div @click="forward()" v-if="ripetizioni==esercizio.ripetizioni">
+									<ion-button>Prossimo</ion-button>
+								</div>
+								
+							</div>
 
 						</div>
 						<div class="text-center text-lg font-bold mb-3" v-if="Object.hasOwn(esercizio, 'tempo') ">
@@ -119,7 +171,7 @@ import { useSchedeStore } from '@/stores/schede';
 import EsercizioCard from '@/components/EsercizioCard.vue'
 import { computed, reactive, ref } from 'vue';
 import EmptyContainer from '@/components/EmptyContainer.vue';
-import { SchedaEsercizio, SchedaEsercizioTempo } from '@/models/Schede';
+import { Esercizio, SchedaEsercizio, SchedaEsercizioTempo } from '@/models/Schede';
 
 const route = useRoute()
 const router = useIonRouter()
@@ -135,6 +187,53 @@ const toggleFav = () => {
 }
 
 const progress = ref(0)
+
+
+/** RIPETIZIONI */
+const ripetizioni = ref(0)
+const ripetizioniIndex = ref(0)
+
+const addRipetizioni = (esercizio: SchedaEsercizio) => {
+	if(! Array.isArray(esercizio.ripetizioni)){
+		ripetizioni.value++
+		progress.value = ripetizioni.value/(+esercizio.ripetizioni)
+	}else{
+		ripetizioni.value++
+		progress.value = esercizio.ripetizioni
+						.map((r, index) => (index < ripetizioniIndex.value) ? r : 0)
+						.reduce((p, c) => c+p, 0) / esercizio.ripetizioni.reduce((p,c) => p+c, 0)
+	}
+}
+const nextRipetizioniIndex = async (esercizio: SchedaEsercizio) => {
+	alert = await alertController.create({
+			header: 'Attenzione',
+			message: 'Stai proseguendo al prossimo set, ora devi diminuire il peso dell\'esercizio',
+			buttons:[
+				{
+					text: 'Conferma',
+					role: 'confirm',
+					handler: () => {
+						ripetizioniIndex.value++
+						ripetizioni.value = 0
+					}
+				}
+			]
+		}) 
+		await alert.present()
+}
+const removeRipetizioni = (esercizio: SchedaEsercizio) => {
+	ripetizioni.value--
+	progress.value = ripetizioni.value/(+esercizio.ripetizioni)
+}
+const resetRipetizioni = () => {
+	ripetizioni.value = 0
+	ripetizioniIndex.value = 0
+	progress.value = 0
+}
+
+
+/** TIMER */
+
 const paused = ref(false)
 const started = ref(false)
 let timer: any
@@ -178,10 +277,51 @@ const timerTime = computed(() => {
 	return `${minutes}m : ${seconds}s`
 })
 
-const forward = () => {
-	const tmp = esNumber.value
-	esNumber.value = -1
-	setTimeout(() => esNumber.value = tmp +1 , 100)
+const forward = async () => {
+	let isDone = false
+	const esercizio = scheda.esercizi[esNumber.value]
+	const resetAndForward = () => {
+		const tmp = esNumber.value
+		esNumber.value = -1
+		ripetizioni.value = 0
+		ripetizioniIndex.value = 0
+		progress.value = 0
+		time.value = 0
+		setTimeout(() => esNumber.value = tmp +1 , 100)
+	}
+
+	if(Object.hasOwn(esercizio, 'tempo')){
+		isDone = esercizio.tempo == time.value
+	}
+	if(Object.hasOwn(esercizio, 'ripetizioni') && !Array.isArray(esercizio.ripetizioni)){
+		isDone = esercizio.ripetizioni == ripetizioni.value
+	}
+	if(Object.hasOwn(esercizio, 'ripetizioni') && Array.isArray(esercizio.ripetizioni)){
+		isDone = ripetizioni.value==esercizio.ripetizioni[ripetizioniIndex.value] && ripetizioniIndex.value >= esercizio.ripetizioni.length-1
+	}
+	
+	if(isDone){
+		resetAndForward()
+	}else{
+		alert = await alertController.create({
+			header: 'Attenzione',
+			message: 'Non hai ancora terminato l\'esercizio corrente, sei sicuro di voler andare avanti?',
+			buttons:[
+				{
+					text: 'Annulla',
+					role: 'cancel',
+					handler: () => undefined
+				},{
+					text: 'Conferma',
+					role: 'confirm',
+					handler: () => {
+						resetAndForward()
+					}
+				}
+			]
+		}) 
+		await alert.present()
+	}
 }
 
 const backwards = () => {
@@ -194,7 +334,6 @@ const backwards = () => {
 const esNumber = ref(0)
 const presenting = ref(false)
 const modal = ref(null)
-const ripetizioni = ref(1)
 let alert = null
 
 async function dismiss(){
@@ -210,6 +349,10 @@ async function dismiss(){
 				text: 'Conferma',
 				role: 'confirm',
 				handler: () => {
+					ripetizioni.value = 0
+					time.value = 0
+					esNumber.value = 0
+					progress.value = 0
 					presenting.value = false
 					modal.value.$el.dismiss();
 				}

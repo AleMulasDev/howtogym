@@ -169,7 +169,7 @@ export const schede = [{
 	"id": "3",
 	"nome": "Heavy leg day",
 	"gruppo_muscolare": "quadricipiti, femorali, polpacci",
-	"pic": "/assets/workoutcover/upperbody.png",
+	"pic": "/assets/workoutcover/gambe.png",
 	"durata": "90",
 	"intensita": "2",
 	"sala": "Quadricipiti, femorali, polpacci",

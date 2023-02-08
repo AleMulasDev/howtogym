@@ -46,7 +46,7 @@ export const useEserciziStore = defineStore('esercizi', {
 				"descrizione": "Eseguire gli squat con bilanciere stando in piedi con i piedi alla larghezza delle spalle. Tenere il petto in alto e la schiena dritta mentre piegate le anche e le ginocchia per abbassare il corpo attraverso una gamma completa di movimenti fino a raggiungere la posizione di squat per poi spingere con le gambe e tornare nella posizione iniziale.",
 				"muscoli": "quadricipiti",
 			}, {
-				"nome": "Standing leg curl",
+				"nome": "Standing Leg curl",
 				"gif": "21613.gif",
 				"descrizione": "Mettersi in una posizione d'incastro in modo tale da usare il ginocchio come perno, usare la parte posteriore della caviglia per eseguire l'esercizio e lavorare il femorale",
 				"muscoli": "femorale",
@@ -117,7 +117,7 @@ export const useEserciziStore = defineStore('esercizi', {
 				"muscoli": "quadricipiti",
 			}, {
 				"nome": "Straight leg deadlift",
-				"gif": "deadliftstraightleg.gif",
+				"gif": "deadliftstraightleg.jpg",
 				"descrizione": "Posizionarsi nella posizione di snatch o clean pulling con una presa pulita sulla sbarra. Mantenendo le gambe tese con le ginocchia completamente dritte, incardinarsi all'anca e permettere alla schiena di arrotondarsi per portare la sbarra il più possibile lungo le gambe, come se ci si stesse allungando.",
 				"muscoli": "femorali",
 			}] as Array<Esercizio>

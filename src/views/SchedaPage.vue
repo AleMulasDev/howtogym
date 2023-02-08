@@ -199,9 +199,14 @@ const addRipetizioni = (esercizio: SchedaEsercizio) => {
 		progress.value = ripetizioni.value/(+esercizio.ripetizioni)
 	}else{
 		ripetizioni.value++
+		console.log(esercizio.ripetizioni
+						.map((r, index) => (index <= ripetizioniIndex.value) ? (index == ripetizioniIndex.value ? ripetizioni.value : r) : 0)
+						.reduce((p, c) => +c+p, 0))
+		console.log("/")
+		console.log(esercizio.ripetizioni.reduce((p,c) => +p+(+c), 0))
 		progress.value = esercizio.ripetizioni
-						.map((r, index) => (index < ripetizioniIndex.value) ? r : 0)
-						.reduce((p, c) => c+p, 0) / esercizio.ripetizioni.reduce((p,c) => p+c, 0)
+						.map((r, index) => (index <= ripetizioniIndex.value) ? (index == ripetizioniIndex.value ? ripetizioni.value : r) : 0)
+						.reduce((p, c) => +c+p, 0) / esercizio.ripetizioni.reduce((p,c) => +p+(+c), 0)
 	}
 }
 const nextRipetizioniIndex = async (esercizio: SchedaEsercizio) => {

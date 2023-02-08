@@ -1,9 +1,9 @@
 <template>
-<div class="bg-slate-900 rounded-2xl p-4 relative mt-3" v-if="esercizio" :id="`open_modal_${esercizio.esercizio}`">
+<div class="bg-neutral-800 rounded-2xl p-4 relative mt-3" v-if="esercizio" :id="`open_modal_${esercizio.esercizio}`">
 	<ion-img :src="`/assets/GIFs/${esercizio._esercizio.gif}`" class="overflow-hidden w-14 h-14 rounded-2xl"></ion-img>
 	<div class="absolute left-20 top-4">
 		<p class="text-sm">{{ esercizio.esercizio }}</p>
-		<p class="text-xs text-slate-600"> {{ esercizio._esercizio.muscoli }}</p>
+		<p class="text-xs text-neutral-600"> {{ esercizio._esercizio.muscoli }}</p>
 	</div>
 </div>
 
@@ -24,7 +24,7 @@
 		<div class="text-center text-lg font-bold">
 			
 		</div>
-		<div class="bg-slate-900 flex flex-row w-full p-5 rounded-2xl">
+		<div class="bg-neutral-800 flex flex-row w-full p-5 rounded-2xl">
 			<div class="flex items-center h-full">
 				{{ esercizio.esercizio }}
 			</div>
@@ -32,7 +32,7 @@
 				<ion-img :src="`/assets/GIFs/${esercizio._esercizio.gif}`" class="overflow-hidden w-20 h-20 rounded-2xl mx-auto"></ion-img>
 			</div>
 		</div>
-		<div class="bg-slate-900 p-5 mt-5 rounded-2xl">
+		<div class="bg-neutral-900 p-5 mt-5 rounded-2xl">
 			{{ esercizio._esercizio.descrizione }}
 		</div>
 	</ion-content>

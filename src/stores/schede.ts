@@ -1,23 +1,24 @@
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
 import { useEserciziStore } from './esercizi'
-import { Esercizio, Scheda, schede as schedeDefault} from '@/models/Schede'
+import { esercizi, Esercizio, Scheda, schede as schedeDefault} from '@/models/Schede'
 
 export const useSchedeStore = defineStore('schede', {
 	state: () => ({
 		storia: useStorage('storia', ['Full body workout']),
-		esercizi: useEserciziStore(),
+		eserciziStore: useEserciziStore(),
+		esercizi: esercizi,
 		_schedeFavouries: useStorage('schedeFavourites', [] as Array<string>),
 	}),
 	getters: {
 		schede: (state) => {
 			return schedeDefault.map((s: any) => {
 				return {...s,
-					isFavourite: state._schedeFavouries.find(sc => sc == s.nome) != undefined,
+					isFavourite: state._schedeFavouries.find(sc => sc.toLowerCase() == s.nome.toLowerCase()) != undefined,
 					esercizi: s.esercizi.map((e: any) => {
 					return {
 						...e,
-						_esercizio: state.esercizi.esercizi.find(e2 => e2.nome == e.esercizio)
+						_esercizio: state.esercizi.find(e2 => e2.nome.toLowerCase() == e.esercizio.toLowerCase())
 					}
 				})}
 			}) as Array<Scheda>

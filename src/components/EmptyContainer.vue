@@ -9,7 +9,7 @@
 					</div>
 				</IonButtons>
 				<IonButtons slot="end" class="m-3 mr-5 h-4 w-4 cursor-pointer" v-if="helpStr">
-					<div id="open_modal_help">
+					<div :id="`open_modal_help_${name}`">
 						<ion-icon :icon="help" size="large"></ion-icon>
 					</div>
 				</IonButtons>
@@ -23,7 +23,7 @@
 		<ion-content class="ion-padding">
 			<slot></slot>
 
-			<ion-modal ref="modal" :trigger="`open_modal_help`">
+			<ion-modal ref="modal" :trigger="`open_modal_help_${name}`">
 			<ion-header>
 				<ion-toolbar>
 				<ion-title>Allenamento</ion-title>

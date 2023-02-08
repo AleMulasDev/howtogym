@@ -1,8 +1,8 @@
 <template>
-	<div class="bg-slate-900 rounded-2xl p-4 relative mt-3"
+	<div class="from-slate-700 to-transparent rounded-2xl p-0 relative mt-3"
 		@click="goToScheda"
 	>
-		<ion-img :src="scheda.pic" class="overflow-hidden w-24 h-24 rounded-2xl"></ion-img>
+		<ion-img :src="scheda.pic" class="overflow-hidden w-28 h-28 rounded-2xl"></ion-img>
 	</div>
 
 

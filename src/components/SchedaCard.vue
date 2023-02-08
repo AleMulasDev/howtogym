@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-slate-900 rounded-2xl p-4 relative mt-3"
+	<div class="bg-neutral-800 rounded-2xl p-4 relative mt-3"
 		v-for="scheda of schedeStore.storiaFilled"
 		:key="scheda?.nome"
 		@click="goToScheda"
@@ -7,8 +7,8 @@
 		<ion-img src="assets/GIFs/4774.gif" class="overflow-hidden w-20 h-20 rounded-2xl"></ion-img>
 		<div class="absolute left-28 top-4">
 			<p class="text-lg">{{ scheda?.nome }}</p>
-			<p class="text-sm text-slate-600">Durata: {{ hTempo(scheda) }}</p>
-			<p class="text-sm text-slate-600">Intensità: {{ intensitaWord }}</p>
+			<p class="text-sm text-neutral-400">Durata: {{ hTempo(scheda) }}</p>
+			<p class="text-sm text-neutral-400">Intensità: {{ intensitaWord }}</p>
 		</div>
 		<div class="absolute right-0" style="top: calc(50% - calc(1.25rem /2))">
 			<div class="h-6">

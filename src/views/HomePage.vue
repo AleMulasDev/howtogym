@@ -10,7 +10,7 @@
 			</div>
 		</div>
 		<div class="mt-3">
-			<p class="text-slate-100 text-sm">Allenamenti popolari</p>
+			<p class="text-neutral-100 text-sm">Allenamenti popolari</p>
 			<div class="flex flex-row overflow-scroll">
 				<div class="max-h-35 mr-2" v-for="scheda of schedeStore.schede" :key="scheda.id">
 					<SchedaIcon :scheda="scheda"></SchedaIcon>
@@ -19,7 +19,7 @@
 			</div>
 		</div>
 		<div class="mt-3">
-			<p class="text-slate-100 text-sm">Allenamenti recenti</p>
+			<p class="text-neutral-100 text-sm">Allenamenti recenti</p>
 			<div class="flex flex-col overflow-scroll mt-1">
 				<SchedaCard :scheda="scheda"
 					v-for="scheda of schedeStore.storiaFilled"

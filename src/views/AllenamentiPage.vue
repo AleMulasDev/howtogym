@@ -8,7 +8,7 @@
 		Una volta trovata la scheda desiderata, premi avvia esercizio e inizia subito il tuo allenamento!"
 	>
 		<div v-for="cat in categories" :key="cat" class="mt-5">
-			<p class="text-slate-100 text-sm">{{ cat }}</p>
+			<p class="text-neutral-100 text-sm">{{ cat }}</p>
 			<div class="flex flex-row overflow-scroll h-35 w-full">
 				<div v-for="es in sStore.schede.filter(s => s.gruppo_muscolare == cat)"
 				:key="es.nome" class="mr-2">

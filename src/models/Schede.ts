@@ -17,13 +17,13 @@ export class Esercizio {
 export class SchedaEsercizio {
 	esercizio: string
 	_esercizio: Esercizio | undefined
-	tempo_recupero: string
+	"tempo di recupero": string
 	ripetizioni: string | Array<number>
 	serie: string
 
-	constructor(esercizio: string, tempo_recupero: string, ripetizioni: string, serie: string) {
+	constructor(esercizio: string, tempo_di_recupero: string, ripetizioni: string, serie: string) {
 		this.esercizio = esercizio
-		this.tempo_recupero = tempo_recupero
+		this["tempo di recupero"] = tempo_di_recupero
 		this.ripetizioni = ripetizioni
 		this.serie = serie
 	}
@@ -126,7 +126,7 @@ export const esercizi = [{
 	"muscoli": "petto, tricipiti, dorso",
 }, {
 	"nome": "Strict curl",
-	"gif": "strictcurl.gif",
+	"gif": "strictcurl.jpg",
 	"descrizione": "Appoggiare la schiena ad una superficie, mantenendo una presa supina con le mani, portare il bilanciere a livello del petto e ritornare nella posizione originale, portando leggermente in avanti i gomiti",
 	"muscoli": "bicipiti",
 },  {
@@ -201,37 +201,37 @@ export const schede = [{
 		"esercizio": "Panca piana bilanciere",
 		"serie": "5",
 		"ripetizioni": "5",
-		"tempo_recupero": "2",
+		"tempo di recupero": "2",
 	}, {
 		"esercizio": "French press bilanciere in piedi",
 		"serie": "3",
 		"ripetizioni": "12",
-		"tempo_recupero": "1",
+		"tempo di recupero": "1",
 	}, {
 		"esercizio": "Lat pulldown al cavo con un braccio",
 		"serie": "4",
 		"ripetizioni": "10",
-		"tempo_recupero": "1",
+		"tempo di recupero": "1",
 	}, {
 		"esercizio": "Spider curl bilanciere",
 		"serie": "3",
 		"ripetizioni": "12",
-		"tempo_recupero": "1",
+		"tempo di recupero": "1",
 	}, {
 		"esercizio": "Squat bilanciere",
 		"serie": "5",
 		"ripetizioni": "5",
-		"tempo_recupero": "2",
+		"tempo di recupero": "2",
 	}, {
 		"esercizio": "Leg curl in piedi",
 		"serie": "4",
 		"ripetizioni": "12",
-		"tempo_recupero": "1",
+		"tempo di recupero": "1",
 	}, {
 		"esercizio": "Calf raises bilanciere",
 		"serie": "5",
 		"ripetizioni": "20",
-		"tempo_recupero": "1",
+		"tempo di recupero": "1",
 	}]
 }, {
 	"id": "2",
@@ -257,14 +257,9 @@ export const schede = [{
 		"ripetizioni": "10",
 		"tempo di recupero": "2",
 	}, {
-		"esercizio": "Military press bilanciere",
-		"serie": "5",
-		"ripetizioni": "8",
-		"tempo di recupero": "2",
-	}, {
 		"esercizio": "Alzate laterali",
 		"serie": "3",
-		"ripetizioni": ["8","8","8"],
+		"ripetizioni": "24",
 		"tempo di recupero": "1",
 	}, {
 		"esercizio": "French press bilanciere in piedi",
@@ -291,7 +286,7 @@ export const schede = [{
 	"id": "3",
 	"nome": "Heavy leg day",
 	"gruppo_muscolare": "quadricipiti, femorali, polpacci",
-	"pic": "/assets/workoutcover/upperbody.png",
+	"pic": "/assets/workoutcover/gambe.png",
 	"durata": "90",
 	"intensita": "2",
 	"sala": "Quadricipiti, femorali, polpacci",
@@ -323,7 +318,7 @@ export const schede = [{
 	}, {
 		"esercizio": "Leg curl in piedi",
 		"serie": "4",
-		"ripetizioni": ["8","8","8"],
+		"ripetizioni": "24",
 		"tempo di recupero": "1",
 	}, {
 		"esercizio": "Calf raises bilanciere",

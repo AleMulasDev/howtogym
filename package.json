@@ -28,7 +28,9 @@
     "ionicons": "^6.0.3",
     "pinia": "^2.0.29",
     "vue": "^3.2.21",
-    "vue-router": "^4.0.12"
+    "vue-progress-circle": "^1.1.2",
+    "vue-router": "^4.0.12",
+    "vue3-radial-progress": "^1.1.1"
   },
   "devDependencies": {
     "@capacitor/cli": "4.6.2",

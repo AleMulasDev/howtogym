@@ -29,7 +29,7 @@
 				{{ esercizio.esercizio }}
 			</div>
 			<div class="flex ml-auto">
-				<ion-img :src="`/assets/GIFs/${esercizio._esercizio.gif}`" class="overflow-hidden w-20 h-20 rounded-2xl mx-auto"></ion-img>
+				<ion-img :src="`/assets/stockmuscles/${esercizio._esercizio.muscoli.split(',')[0]}.jpg`" class="overflow-hidden w-20 h-20 rounded-2xl mx-auto"></ion-img>
 			</div>
 		</div>
 		<div class="bg-neutral-900 p-5 mt-5 rounded-2xl">

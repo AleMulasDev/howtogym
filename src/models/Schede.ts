@@ -297,11 +297,6 @@ export const schede = [{
 		"ripetizioni": "10",
 		"tempo_recupero": "2",
 	}, {
-		"esercizio": "Military press bilanciere",
-		"serie": "5",
-		"ripetizioni": "8",
-		"tempo_recupero": "2",
-	}, {
 		"esercizio": "Alzate laterali",
 		"serie": "3",
 		"ripetizioni": ["8", "8", "8"],

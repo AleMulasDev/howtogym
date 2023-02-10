@@ -31,7 +31,6 @@ import { defineProps } from 'vue';
 const router = useIonRouter()
 const props = defineProps(['scheda'])
 const scheda = reactive(props.scheda)
-console.log(scheda)
 const routeTo = `/scheda/${scheda?.id}`
 const schedeStore = ref(useSchedeStore())
 

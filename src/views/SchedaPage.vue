@@ -180,7 +180,6 @@ const startRecupero = (recupero: any) => {
 	clearInterval(timer)
 	time.value = 0
 	timerRecupero = setInterval(() => {
-		console.log(`Time: ${time.value} recupero: ${recupero}`)
 		time.value +=1
 		if((time.value/recupero) >= 1){
 			clearInterval(timerRecupero)
@@ -359,6 +358,5 @@ console.log(scheda)
 ion-button[slot="fixed"] {
 	bottom: 1%;
 	left: calc(50% - calc(256px / 2));
-	box-shadow: #333333 0 0 20px 18px;
 }
 </style>

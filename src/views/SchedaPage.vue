@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<div class="w-full relative mt-5">
-			<div class="text-lg inline">
+			<div class="text-2xl inline">
 				{{ scheda.nome }}
 			</div>
 			<div class="absolute right-0 top-0 h-6">
@@ -52,7 +52,7 @@
 				</ion-buttons>
 				</ion-toolbar>
 			</ion-header>
-			<ion-content class="ion-padding">
+			<ion-content class="ion-padding overflow-scroll">
 				<div class="flex flex-row w-full justify-center">
 					<div @click="backwards" class="mr-3" v-if="esNumber > 0">
 						<ion-button>Indietro</ion-button>
@@ -100,8 +100,9 @@
 							</div>
 
 							<div class="w-full flex flex-row justify-center mt-3">
-								<div @click="startTimer(esercizio)">
-									<ion-button>Inizia</ion-button>
+								<div @click="startTimer(esercizio)" v-if="time == 0">
+									<ion-button v-if="paused">Azzera</ion-button>
+									<ion-button v-if="!paused">Inizia</ion-button>
 								</div>
 								<div @click="pauseTimer(esercizio)" v-if="!paused">
 									<ion-button>Pausa</ion-button>
@@ -228,6 +229,7 @@ const started = ref(false)
 let timer: any
 const time = ref(0)
 const startTimer = (esercizio: SchedaEsercizioTempo) => {
+	clearInterval(timer)
 	const total = +esercizio.tempo * 60
 	progress.value = 0
 	time.value = 0

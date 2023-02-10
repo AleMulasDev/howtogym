@@ -5,6 +5,17 @@ http://ionicframework.com/docs/theming/ */
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+	font-family: 'Inter';
+	src: url('../../public/assets/fonts/Inter-Black.ttf');
+}
+
+h1{ 
+	font-family: Inter !important;
+  font-style: italic;
+	font-size:1.0em;
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/

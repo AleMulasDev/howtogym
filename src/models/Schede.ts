@@ -17,13 +17,13 @@ export class Esercizio {
 export class SchedaEsercizio {
 	esercizio: string
 	_esercizio: Esercizio | undefined
-	"tempo di recupero": string
+	"tempo_recupero": string
 	ripetizioni: string | Array<number>
 	serie: string
 
 	constructor(esercizio: string, tempo_di_recupero: string, ripetizioni: string, serie: string) {
 		this.esercizio = esercizio
-		this["tempo di recupero"] = tempo_di_recupero
+		this["tempo_recupero"] = tempo_di_recupero
 		this.ripetizioni = ripetizioni
 		this.serie = serie
 	}
@@ -285,47 +285,47 @@ export const schede = [{
 		"esercizio": "Military press bilanciere",
 		"serie": "8",
 		"ripetizioni": "3",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
 		"esercizio": "Dip con panca",
 		"serie": "5",
 		"ripetizioni": "15",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "Pullover bilanciere",
 		"serie": "5",
 		"ripetizioni": "10",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
 		"esercizio": "Military press bilanciere",
 		"serie": "5",
 		"ripetizioni": "8",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
 		"esercizio": "Alzate laterali",
 		"serie": "3",
 		"ripetizioni": ["8", "8", "8"],
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "French press bilanciere in piedi",
 		"serie": "3",
 		"ripetizioni": "10",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "Skullcrusher",
 		"serie": "4",
 		"ripetizioni": "8",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "Strict curl",
 		"serie": "5",
 		"ripetizioni": "8",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
 		"esercizio": "Spider curl bilanciere",
 		"serie": "4",
 		"ripetizioni": "12",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}]
 }, {
 	"id": "3",
@@ -339,37 +339,37 @@ export const schede = [{
 		"esercizio": "Squat bilanciere",
 		"serie": "5",
 		"ripetizioni": "10",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
 		"esercizio": "Pressa",
 		"serie": "4",
 		"ripetizioni": "12",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "Affondi in camminata con manubri",
 		"serie": "5",
 		"ripetizioni": "12",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
 		"esercizio": "Stacco a gambe dritte",
 		"serie": "6",
 		"ripetizioni": "8",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
 		"esercizio": "Stacchi rumeni",
 		"serie": "4",
 		"ripetizioni": "8",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "Leg curl in piedi",
 		"serie": "4",
 		"ripetizioni": ["8", "8", "8"],
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "Calf raises bilanciere",
 		"serie": "6",
 		"ripetizioni": "24",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}]
 }, {
 	"id": "4",
@@ -383,52 +383,52 @@ export const schede = [{
 		"esercizio": "Squat bilanciere",
 		"serie": "7",
 		"ripetizioni": "5",
-		"tempo di recupero": "3",
+		"tempo_recupero": "3",
 	}, {
 		"esercizio": "Pressa",
 		"serie": "5",
 		"ripetizioni": "8",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
 		"esercizio": "Leg extension",
 		"serie": "4",
 		"ripetizioni": "15",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "Panca piana bilanciere",
 		"serie": "7",
 		"ripetizioni": "2",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
 		"esercizio": "Croci petto",
 		"serie": "4",
 		"ripetizioni": "12",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "Dip con panca",
 		"serie": "5",
 		"ripetizioni": "20",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "French press bilanciere in piedi",
 		"serie": "5",
 		"ripetizioni": "8",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
 		"esercizio": "Spider curl bilanciere",
 		"serie": "5",
 		"ripetizioni": "8",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
 		"esercizio": "Alzata al petto",
 		"serie": "4",
 		"ripetizioni": "10",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "Alzate laterali",
 		"serie": "5",
 		"ripetizioni": "20",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}]
 }, {
 	"id": "5",
@@ -442,51 +442,51 @@ export const schede = [{
 		"esercizio": "Stacco a gambe dritte",
 		"serie": "5",
 		"ripetizioni": "6",
-		"tempo di recupero": "3",
+		"tempo_recupero": "3",
 	}, {
 		"esercizio": "Leg curl in piedi",
 		"serie": "4",
 		"ripetizioni": "12",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "Stacchi rumeni",
 		"serie": "3",
 		"ripetizioni": "12",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
-		"esercizio": "Rocky pullup",
+		"esercizio": "Rocky pull-up",
 		"serie": "6",
 		"ripetizioni": "8",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
-		"esercizio": "Goodmorning",
+		"esercizio": "Good morning",
 		"serie": "5",
 		"ripetizioni": "8",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
 		"esercizio": "Rematore",
 		"serie": "5",
 		"ripetizioni": "10",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
 		"esercizio": "Lat pulldown al cavo con un braccio",
 		"serie": "4",
 		"ripetizioni": "12",
-		"tempo di recupero": "2",
+		"tempo_recupero": "2",
 	}, {
 		"esercizio": "Strict curl",
 		"serie": "6",
 		"ripetizioni": "8",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "Overhead curl al cavo",
 		"serie": "4",
 		"ripetizioni": "12",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "Alzata al petto",
 		"serie": "5",
 		"ripetizioni": "10",
-		"tempo di recupero": "1",
+		"tempo_recupero": "1",
 	}]
 }] as Scheda[]

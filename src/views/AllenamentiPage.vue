@@ -14,7 +14,7 @@
 			</div>
 		</div>
 		<div class="w-full flex flex-row overflow-scroll mt-5">
-			<div v-for="muscolo of categories" :key="muscolo" @click="toggleMuscolo(muscolo)" :class="'mr-3 p-2 rounded-3xl ' + (selectedMuscoli.has(muscolo) ? 'bg-gray-200 text-black' : 'bg-neutral-800')">
+			<div v-for="muscolo of categories" :key="muscolo" @click="toggleMuscolo(muscolo)" :class="'mr-3 p-3 rounded-3xl ' + (selectedMuscoli.has(muscolo) ? 'bg-gray-200 text-black' : 'bg-neutral-800')">
 				{{ muscolo }}
 			</div>
 		</div>

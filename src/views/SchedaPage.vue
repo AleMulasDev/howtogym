@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<div class="mt-5 mb-16">
-			<EsercizioCard v-for="es of scheda.esercizi" :key="es.nome" :esercizio="es"></EsercizioCard>
+			<EsercizioCard v-for="es of scheda.esercizi" :key="es.esercizio" :esercizio="es"></EsercizioCard>
 		</div>
 
 		<ion-button slot="fixed" style="width: 256px;" :id="`open_modal_${scheda.nome}`">
@@ -126,9 +126,9 @@
 						</div>
 						<div v-if="isRecupero" class="flex flex-column align-center">
 							<div class="mx-auto">
-								<p>Tempo di recupero previsto: {{ esercizio['tempo di recupero'] }} minuti</p>
+								<p>Tempo di recupero previsto: {{ esercizio['tempo_recupero'] }} minuti</p>
 								<div class="mx-auto mt-5 relative" style="width:200px">
-									<radial-progress-bar  :completed-steps="time" :total-steps="esercizio['tempo di recupero']*60"></radial-progress-bar>
+									<radial-progress-bar  :completed-steps="time" :total-steps="esercizio['tempo_recupero']*60"></radial-progress-bar>
 									<p style="width: 200px; height: 10px; top: 90px; left: 0px; text-align: center; position: absolute">{{Math.floor(time/60)}}:{{ time-(Math.floor(time/60)*60) }}</p>
 								</div>
 								<div @click="skipRecupero" class="flex items-center">
@@ -171,13 +171,13 @@ const toggleFav = () => {
 
 const progress = ref(0)
 
-
 /** SERIE */
 const serie = ref(0)
 const isRecupero = ref(false)
 let timerRecupero
 
 const startRecupero = (recupero: any) => {
+	clearInterval(timer)
 	time.value = 0
 	timerRecupero = setInterval(() => {
 		console.log(`Time: ${time.value} recupero: ${recupero}`)
@@ -200,7 +200,7 @@ const skipRecupero = () => {
 const addSerie = async (esercizio: SchedaEsercizio) => {
 	serie.value++
 	progress.value = serie.value/(+esercizio.serie)
-	const recupero = esercizio["tempo di recupero"]*60
+	const recupero = esercizio["tempo_recupero"]*60
 	isRecupero.value = true
 	startRecupero(recupero)
 	// const loading = await loadingController.create({
@@ -352,7 +352,7 @@ async function dismiss(){
 }
 
 const scheda = reactive(schedeS.schede.filter(s => s.id == route.params.id)[0])
-
+console.log(scheda)
 </script>
 
 <style scoped>

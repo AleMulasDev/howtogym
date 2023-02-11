@@ -108,7 +108,7 @@ export const esercizi = [{
 	"nome": "Leg curl in piedi",
 	"gif": "21613.gif",
 	"descrizione": "Mettersi in una posizione d'incastro in modo tale da usare il ginocchio come perno, usare la parte posteriore della caviglia per eseguire l'esercizio e lavorare il femorale",
-	"muscoli": "femorale",
+	"muscoli": "femorali",
 }, {
 	"nome": "Rocky pull-up",
 	"gif": "rockypullup.jpg",
@@ -237,6 +237,7 @@ export const schede = [{
 	"esercizi": [{
 		"esercizio": "Jumping jack",
 		"tempo": "10",
+		"tempo_recupero": "1",
 	}, {
 		"esercizio": "Panca piana bilanciere",
 		"serie": "5",

@@ -16,13 +16,13 @@
 
 				<!-- Esercizi -->
 				<ion-tab-button tab="esercizi" href="/tabs/esercizi" :selected="$route.path.indexOf('esercizi') >= 0">
-					<ion-icon :icon="barbellOutline"></ion-icon>
+					<ion-icon :icon="newspaperOutline"></ion-icon>
 					<ion-label></ion-label>
 				</ion-tab-button>
 
 				<!-- Schede -->
 				<ion-tab-button tab="schede" href="/tabs/schede" :selected="$route.path.indexOf('schede') >= 0">
-					<ion-icon :icon="newspaperOutline"></ion-icon>
+					<ion-icon :icon="barbellOutline"></ion-icon>
 					<ion-label></ion-label>
 				</ion-tab-button>
 

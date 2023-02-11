@@ -12,7 +12,7 @@
 		</div>
 		<div class="w-full flex flex-row overflow-scroll mt-3">
 			<div v-for="muscolo of categories" :key="muscolo" @click="toggleMuscolo(muscolo)" :class="'mr-3 p-3 rounded-3xl ' + (selectedMuscoli.has(muscolo) ? 'bg-gray-200 text-black' : 'bg-neutral-800')">
-				{{ muscolo }}
+				{{ upperCase(muscolo) }}
 			</div>
 		</div>
 		<EsercizioCard v-for="esercizio of esercizi" :esercizio="esercizio" :key="esercizio.esercizio"></EsercizioCard>
@@ -40,6 +40,10 @@ watch(search, async (newSearch, oldSearch) => {
 
 const selectedMuscoli = reactive(new Set())
 
+const upperCase = (word: string) => {
+	return word.charAt(0).toUpperCase() + word.slice(1)
+}
+
 
 const toggleMuscolo = (muscolo: any) => {
 	if(selectedMuscoli.has(muscolo)) selectedMuscoli.delete(muscolo)
@@ -50,12 +54,13 @@ const toggleMuscolo = (muscolo: any) => {
 
 const categories = computed(() => {
 	const set = new Set()
-	useEserciziStore().esercizi.forEach(s => s.muscoli.replace(' ', '').split(',').forEach(g => set.add(g)))
-	return Array.from(set) as string[]
+	useEserciziStore().esercizi.forEach(s => s.muscoli.replace(/ /g, '').split(',').forEach(g => set.add(g.toLowerCase())))
+	console.log(set)
+	return Array.from(set).sort() as string[]
 })
 
 const hasMuscolo = (esercizio: SchedaEsercizio, muscolo: string) => {
-	return esercizio._esercizio?.muscoli.toLowerCase().replace(' ', '').split(',').reduce(((p: boolean, c: string) => c.indexOf(muscolo.toLowerCase()) != -1 ? true : p), false)   
+	return esercizio._esercizio?.muscoli.toLowerCase().replace(/ /g, '').split(',').reduce(((p: boolean, c: string) => c.indexOf(muscolo.toLowerCase()) != -1 ? true : p), false)   
 }
 
 

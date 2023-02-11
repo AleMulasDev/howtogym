@@ -60,7 +60,7 @@ function hTempo(scheda?: Scheda){
 }
 
 function goToScheda(){
-	router.navigate(`/scheda/${scheda?.id}`, 'forward', `replace`)
+	router.push(`/scheda/${scheda?.id}`)
 }
 
 </script>

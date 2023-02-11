@@ -15,7 +15,7 @@
 		</div>
 		<div class="w-full flex flex-row overflow-scroll mt-5">
 			<div v-for="muscolo of categories" :key="muscolo" @click="toggleMuscolo(muscolo)" :class="'mr-3 p-3 rounded-3xl ' + (selectedMuscoli.has(muscolo) ? 'bg-gray-200 text-black' : 'bg-neutral-800')">
-				{{ muscolo }}
+				{{ upperCase(muscolo) }}
 			</div>
 		</div>
 		<SchedaCard v-for="esercizio of schede" :scheda="esercizio" :key="esercizio.id"></SchedaCard>
@@ -44,6 +44,9 @@ watch(search, async (newSearch, oldSearch) => {
 
 const selectedMuscoli = reactive(new Set())
 
+const upperCase = (word: string) => {
+	return word.charAt(0).toUpperCase() + word.slice(1)
+}
 
 const toggleMuscolo = (muscolo: any) => {
 	if(selectedMuscoli.has(muscolo)) selectedMuscoli.delete(muscolo)
@@ -54,12 +57,12 @@ const toggleMuscolo = (muscolo: any) => {
 
 const categories = computed(() => {
 	const set = new Set()
-	schedeStore.schede.forEach(s => s.gruppo_muscolare.replace(' ', '').split(',').forEach(g => set.add(g)))
-	return Array.from(set) as string[]
+	schedeStore.schede.forEach(s => s.gruppo_muscolare.replace(/ /g, '').split(',').forEach(g => set.add(g.toLowerCase())))
+	return Array.from(set).sort() as string[]
 })
 
 const hasMuscolo = (scheda: Scheda, muscolo: string) => {
-	return scheda?.gruppo_muscolare.toLowerCase().replace(' ', '').split(',').reduce(((p: boolean, c: string) => c.indexOf(muscolo.toLowerCase()) != -1 ? true : p), false)   
+	return scheda?.gruppo_muscolare.toLowerCase().replace(/ /g, '').split(',').reduce(((p: boolean, c: string) => c.indexOf(muscolo.toLowerCase()) != -1 ? true : p), false)   
 }
 
 
@@ -67,7 +70,7 @@ const executeSearch = (newSearch: string) => {
 	if(newSearch == '') schede.value = schedeStore.schede
 	schede.value = schedeStore.schede
 		.filter(e => e.nome.toLowerCase().indexOf(newSearch.toLowerCase()) != -1)
-		.filter(e => selectedMuscoli.size == 0 || e.gruppo_muscolare.toLowerCase().replace(' ', '').split(',').reduce((p,c) => (selectedMuscoli.has(c) ? true : p), false))
+		.filter(e => selectedMuscoli.size == 0 || e.gruppo_muscolare.toLowerCase().replace(/ /g, '').split(',').reduce((p,c) => (selectedMuscoli.has(c) ? true : p), false))
 	
 		console.log(schede.value)
 }

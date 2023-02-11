@@ -91,7 +91,7 @@ h1{
   --ion-color-light-tint: #f5f6f9;
 }
 
-@media (prefers-color-scheme: dark) {
+
   /*
    * Dark Colors
    * -------------------------------------------
@@ -248,4 +248,3 @@ h1{
 
     --ion-card-background: #1e1e1e;
   }
-}

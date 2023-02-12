@@ -61,7 +61,7 @@
 						<ion-button>Avanti</ion-button>
 					</div>
 				</div>
-				<div v-for="(esercizio, index) in scheda.esercizi" :key="esercizio.esercizio">
+				<div v-for="(esercizio, index) in scheda.esercizi" :key="esercizio.esercizio" class="pb-3">
 					<div v-if="esNumber == index">
 						<div class="w-full mt-5 mb-5">
 							<ion-img :src="`/assets/GIFs/${esercizio?._esercizio?.gif}`" class="overflow-hidden w-2/3 h-auto rounded-2xl mx-auto"></ion-img>

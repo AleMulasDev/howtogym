@@ -47,13 +47,21 @@
 			<ion-header>
 				<ion-toolbar>
 				<ion-title>Allenamento</ion-title>
+				<ion-buttons slot="start">
+					<ion-button @click="dismiss()">Chiudi</ion-button>
+				</ion-buttons>
 				<ion-buttons slot="end">
-					<ion-button @click="dismiss()">Close</ion-button>
+					<div :id="`open_modal_help_${scheda.nome}`">
+						<ion-icon :icon="help" size="large"></ion-icon>
+					</div>
 				</ion-buttons>
 				</ion-toolbar>
 			</ion-header>
 			<ion-content class="ion-padding overflow-scroll">
-				<div class="flex flex-row w-full justify-center">
+				<div class="w-full justify-center">
+					<ion-progress-bar :value="esNumber / (scheda.esercizi.length-1)"></ion-progress-bar>
+				</div>
+				<div class="flex flex-row w-full justify-center mt-3">
 					<div @click="backwards" class="mr-3" v-if="esNumber > 0">
 						<ion-button>Indietro</ion-button>
 					</div>
@@ -74,14 +82,11 @@
 							<ion-progress-bar :value="progress"></ion-progress-bar>
 
 							<div class="w-full flex flex-row justify-center mt-3">
-								<div class="mr-5" @click="resetSerie(esercizio)">
-									<ion-button color="warning">Reset</ion-button>
-								</div>
 								<div class="mr-2" @click="removeSerie(esercizio)" v-if="serie>0">
 									<ion-button>Precedente</ion-button>
 								</div>
 								<div @click="addSerie(esercizio)" v-if="serie<esercizio.serie">
-									<ion-button>Prossima serie</ion-button>
+									<ion-button>Prossima</ion-button>
 								</div>
 								<div @click="forward()" v-if="serie == esercizio.serie">
 									<ion-button>Prossimo</ion-button>
@@ -123,6 +128,11 @@
 						<div class="bg-slate-900 p-5 mt-5 rounded-2xl">
 							{{ esercizio?._esercizio?.descrizione }}
 						</div>
+						<div class="mt-3 flex flex-row w-full justify-center">
+							<div @click="resetSerie(esercizio)">
+								<ion-button color="warning">Reset</ion-button>
+							</div>
+						</div>
 						</div>
 						<div v-if="isRecupero" class="flex flex-column align-center">
 							<div class="mx-auto">
@@ -138,6 +148,59 @@
 						</div>
 					</div>
 				</div>
+
+				<ion-modal ref="modalHelp" :trigger="`open_modal_help_${scheda.nome}`">
+				<ion-header>
+					<ion-toolbar>
+					<ion-title>Aiuto</ion-title>
+					<ion-buttons slot="end">
+						<ion-button @click="dismissHelp()">Chiudi</ion-button>
+					</ion-buttons>
+					</ion-toolbar>
+				</ion-header>
+				<ion-content class="ion-padding">
+					<div class="flex flex-col w-full justify-center overflow-scroll">
+						<div class="flex flex-row w-full justify-center">
+							<ion-button class="mr-3" @click="helpIndex--" v-if="helpIndex > 0">Indietro</ion-button>
+							<ion-button @click="helpIndex++" v-if="helpIndex < 3">Avanti</ion-button>
+						</div>
+						<div v-if="helpIndex == 0">
+							<div>
+								Alcuni esercizi sono temporali <br>
+								Per questo tipo di esercizi l'applicazione prevede un cronometro che ti tenga aggiornato sul proseguimento dell'esercizio
+							</div>
+							<ion-img class="h-1/2 border-slate-900 p-5" src="/assets/help/base_tempo.png" alt="Schermata base esercizio temporale"></ion-img>
+						</div>
+						<div v-if="helpIndex == 1">
+							<div>
+								Alcuni esercizi sono temporali <br>
+								Per questo tipo di esercizi l'applicazione prevede un timer che ti tenga aggiornato sul proseguimento dell'esercizio <br>
+								Qua sotto si può vedere l'esempio con il cronometro
+							</div>
+							<ion-img class="h-1/2 border-slate-900 p-5" src="/assets/help/base_tempo_running.png" alt="Schermata base esercizio temporale"></ion-img>
+						</div>
+						<div v-if="helpIndex == 2">
+							<div>
+								Dopo ogni esercizio è previsto un tempo di recupero<br>
+								Rispettarlo è importante per un corretto allenamento<br>
+								L'applicazione prevedere un timer per tenerti informato su quanto aspettare <br>
+							</div>
+							<ion-img class="h-1/2 border-slate-900 p-5" src="/assets/help/base_recupero.png" alt="Schermata base esercizio temporale"></ion-img>
+						</div>
+						<div v-if="helpIndex == 3">
+							<div>
+								La maggior parte degli esercizi prevede una serie di esercizi <br>
+								Esegui l'esercizio per il numero di ripetizioni che è indicato, dopo di chè
+								premi il pulsante per proseguire alla prossima serie e effettuare nuovamente l'esercizio per il numero di ripetizioni indicato. <br>
+								Tra ogni serie è previsto un tempo di recupero.
+							</div>
+							<ion-img class="h-1/2 border-slate-900 p-5" src="/assets/help/base_serie.png" alt="Schermata base esercizio temporale"></ion-img>
+						</div>
+
+					</div>
+				</ion-content>
+				</ion-modal>
+
 			</ion-content>
 			</ion-modal>
 		</div>
@@ -147,6 +210,7 @@
 <script lang="ts" setup>
 import { IonImg, alertController, useIonRouter, IonProgressBar, IonIcon, IonButton, IonModal, IonContent, IonHeader, IonButtons, IonToolbar, IonTitle } from '@ionic/vue';
 import { loadingController } from '@ionic/vue';
+import { help } from 'ionicons/icons';
 import { star, starOutline, calendarClearOutline } from 'ionicons/icons';
 import { useRoute } from 'vue-router';
 import { useSchedeStore } from '@/stores/schede';
@@ -159,6 +223,8 @@ import RadialProgressBar from "vue3-radial-progress";
 const route = useRoute()
 const router = useIonRouter()
 const schedeS = useSchedeStore()
+
+const helpIndex = ref(0)
 
 const icon = computed(() => {
 	return scheda.isFavourite ? star : starOutline
@@ -218,6 +284,9 @@ const removeSerie = (esercizio: SchedaEsercizio) => {
 const resetSerie = () => {
 	serie.value = 0
 	progress.value = 0
+	time.value = 0
+	clearTimeout(timer)
+	clearTimeout(timerRecupero)
 }
 
 
@@ -274,11 +343,10 @@ const forward = async () => {
 	const esercizio = scheda.esercizi[esNumber.value]
 	const resetAndForward = () => {
 		const tmp = esNumber.value
-		esNumber.value = -1
 		serie.value = 0
 		progress.value = 0
 		time.value = 0
-		setTimeout(() => esNumber.value = tmp +1 , 100)
+		esNumber.value = tmp +1
 	}
 
 	if(Object.hasOwn(esercizio, 'tempo')){
@@ -314,14 +382,13 @@ const forward = async () => {
 
 const backwards = () => {
 	const tmp = esNumber.value
-	esNumber.value = -1
 	esNumber.value = tmp -1
-	setTimeout(() => esNumber.value = tmp -1 , 100)
 }
 
 const esNumber = ref(0)
 const presenting = ref(false)
 const modal = ref(null)
+const modalHelp = ref(null)
 let alert = null
 
 async function dismiss(){
@@ -348,6 +415,10 @@ async function dismiss(){
 		]
 	}) 
 	await alert.present()
+}
+
+const dismissHelp = () => {
+	modalHelp.value.$el.dismiss()
 }
 
 const scheda = reactive(schedeS.schede.filter(s => s.id == route.params.id)[0])

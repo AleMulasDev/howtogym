@@ -26,7 +26,7 @@
 			<ion-modal ref="modal" :trigger="`open_modal_help_${name}`">
 			<ion-header>
 				<ion-toolbar>
-				<ion-title>Allenamento</ion-title>
+				<ion-title>Aiuto</ion-title>
 				<ion-buttons slot="end">
 					<ion-button @click="dismiss()">Close</ion-button>
 				</ion-buttons>

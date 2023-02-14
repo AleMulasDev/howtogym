@@ -12,8 +12,8 @@
 	<ion-header>
 		<ion-toolbar>
 		<ion-title>Spiegazione</ion-title>
-		<ion-buttons slot="end">
-			<ion-button @click="dismiss()">Close</ion-button>
+		<ion-buttons slot="start" class="ml-3">
+			<ion-icon @click="dismiss()" :icon="chevronBack" size="large"></ion-icon>
 		</ion-buttons>
 		</ion-toolbar>
 	</ion-header>
@@ -43,6 +43,7 @@
 </template>
 
 <script lang="ts" setup>
+import { chevronBack } from 'ionicons/icons';
 import { defineProps, ref } from 'vue';
 import { IonImg } from '@ionic/vue';
 import { IonModal, IonHeader, IonToolbar, IonTitle, IonButton, IonButtons, IonContent } from '@ionic/vue';
